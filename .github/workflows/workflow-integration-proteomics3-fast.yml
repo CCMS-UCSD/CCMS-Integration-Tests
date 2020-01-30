@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - workflow-testing
   schedule:
    - cron:  '10 * * * *'
 
