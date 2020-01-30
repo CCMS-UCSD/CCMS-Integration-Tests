@@ -1,3 +1,6 @@
 [submodule "CCMSDeployments"]
 	path = CCMSDeployments
 	url = https://github.com/CCMS-UCSD/CCMSDeployments.git
+[submodule "GNPS_Workflows"]
+	path = GNPS_Workflows
+	url = https://github.com/CCMS-UCSD/GNPS_Workflows.git
