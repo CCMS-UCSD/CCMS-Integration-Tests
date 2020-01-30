@@ -27,3 +27,13 @@ Additionally, we have integrated this utility into github actions but can be cal
 ```python ./submit_test_job_batch.py --credential_username <username> --credential_password <password> --workflow_task_file test_tasks.tsv```
 
 where the utility can be found in testing-utilities. 
+
+
+## Adding your own Github Actions Tests
+
+We rely on the continuous integration from github actions. There are several steps you'll need to accomplish:
+
+1. Add a submodule to your repository that has a csv file described above to say which task ids you want to test
+1. Create a new yml file describing the new CI job for github actions. You can copy one from the .github/workflows folder and obey the naming convention
+1. Alter the path to the test_tasks.csv to yours 
+1. Commit and push. It should be running once its gets into master. 
