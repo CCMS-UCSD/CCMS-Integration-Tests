@@ -1,6 +1,8 @@
 name: workflow-integration-beta-masst
 
 on:
+  pull_request_review:
+    types: [submitted]
   schedule:
    - cron:  '2 2 * * *'
 

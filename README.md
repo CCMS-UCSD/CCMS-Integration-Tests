@@ -10,6 +10,7 @@
 ![workflow-integration-gnps-fast](https://github.com/CCMS-UCSD/CCMS-Integration-Tests/workflows/workflow-integration-gnps-fast/badge.svg)
 ![workflow-integration-proteomics3-fast](https://github.com/CCMS-UCSD/CCMS-Integration-Tests/workflows/workflow-integration-proteomics3-fast/badge.svg)
 
+
 ## Testing Workflows
 
 In order to test workflows in a production setting, we have created a utility to do that. Specificaly, if a csv file containing test tasks is provided, then they will be run. 
