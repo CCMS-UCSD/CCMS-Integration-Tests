@@ -1,6 +1,8 @@
 name: workflow-integration-beta-networkingv2
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '4 4 * * *'
 

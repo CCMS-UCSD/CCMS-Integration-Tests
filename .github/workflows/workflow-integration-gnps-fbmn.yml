@@ -1,6 +1,8 @@
 name: workflow-integration-gnps-fbmn
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '6 5 * * *'
 

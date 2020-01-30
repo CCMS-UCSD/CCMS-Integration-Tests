@@ -1,6 +1,8 @@
 name: workflow-integration-beta-misc
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '3 3 * * *'
 

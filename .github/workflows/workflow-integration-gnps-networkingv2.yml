@@ -1,6 +1,8 @@
 name: workflow-integration-gnps-networkingv2
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '10 9 * * *'
 

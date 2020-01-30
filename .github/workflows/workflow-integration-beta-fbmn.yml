@@ -1,6 +1,8 @@
 name: workflow-integration-beta-fbmn
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '0 12 * * *'
 

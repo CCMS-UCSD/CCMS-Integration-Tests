@@ -1,6 +1,8 @@
 name: workflow-integration-gnps-misc
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '9 8 * * *'
 

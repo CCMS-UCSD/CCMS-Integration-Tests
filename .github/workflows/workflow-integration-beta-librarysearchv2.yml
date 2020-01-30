@@ -1,6 +1,8 @@
 name: workflow-integration-beta-librarysearchv2
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '1 1 * * *'
 

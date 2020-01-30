@@ -1,6 +1,8 @@
 name: workflow-integration-gnps-masst
 
 on:
+  pull_request:
+    types: [unlocked]
   schedule:
    - cron:  '8 7 * * *'
 
