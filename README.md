@@ -37,4 +37,5 @@ We rely on the continuous integration from github actions. There are several ste
 1. Add a submodule to your repository that has a csv file described above to say which task ids you want to test
 1. Create a new yml file describing the new CI job for github actions. You can copy one from the .github/workflows folder and obey the naming convention
 1. Alter the path to the test_tasks.csv to yours 
-1. Commit and push. It should be running once its gets into master. 
+1. Commit and push. It should be running once its gets into master
+1. Add badge to readme
