@@ -4,3 +4,6 @@
 [submodule "GNPS_Workflows"]
 	path = GNPS_Workflows
 	url = https://github.com/CCMS-UCSD/GNPS_Workflows.git
+[submodule "LiveSearch"]
+	path = LiveSearch
+	url = git@github.com:mwang87/CCMS_livesearch.git
