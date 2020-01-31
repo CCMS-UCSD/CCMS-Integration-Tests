@@ -46,3 +46,8 @@ We rely on the continuous integration from github actions. There are several ste
 1. Alter the path to the test_tasks.csv to yours 
 1. Commit and push. It should be running once its gets into master
 1. Add badge to readme
+
+## Actions Run Schedule
+
+We run the tests once every 24 hours. Additionally, we enable a way to manually enable all of them to run. This is used when there is new code that will want to be deployed. 
+Please create a pull request and then only admins can lock and then unlock the conversation. This unlock operation triggers the workflows to run. 
