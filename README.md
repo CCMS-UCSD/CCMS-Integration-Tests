@@ -13,7 +13,7 @@
 ## Specific Workflow Tests
 
 | Workflow  | GNPS Link  | Beta Link  | Unit Test | Workflow GNPS Test | Workflow Beta Test |
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 | Molecular Networking  | [Workflow](https://gnps.ucsd.edu/ProteoSAFe/index.jsp?params=%7B%22workflow%22:%22METABOLOMICS-SNETS-V2%22,%22library_on_server%22:%22d.speclibs;%22%7D)  | [Workflow](https://proteomics2.ucsd.edu/ProteoSAFe/index.jsp?params=%7B%22workflow%22:%22METABOLOMICS-SNETS-V2%22,%22library_on_server%22:%22d.speclibs;%22%7D) | ![](https://github.com/CCMS-UCSD/GNPS_Workflows/workflows/workflow-unit-networking/badge.svg) | ![](https://github.com/CCMS-UCSD/CCMS-Integration-Tests/workflows/workflow-integration-gnps-networkingv2/badge.svg) | ![](https://github.com/CCMS-UCSD/CCMS-Integration-Tests/workflows/workflow-integration-beta-networkingv2/badge.svg)
 
 
