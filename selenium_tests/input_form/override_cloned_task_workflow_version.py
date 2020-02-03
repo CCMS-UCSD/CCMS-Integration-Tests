@@ -6,12 +6,13 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest, time, re
+import os
 
 class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         self.driver.implicitly_wait(30)
-        self.base_url = "https://gnps.ucsd.edu/"
+        self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu/")
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -28,9 +29,9 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("user").send_keys("test")
+        driver.find_element_by_name("user").send_keys(os.environ.get("CCMS_TESTUSER_USERNAME"))
         driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("testtest")
+        driver.find_element_by_name("password").send_keys(os.environ.get("CCMS_TESTUSER_PASSWORD"))
         driver.find_element_by_name("login").click()
         for i in range(60):
             try:
@@ -41,15 +42,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         # clone reference task (version "1.2.5") and verify that input form is loaded
         print("Cloning reference task with version \"1.2.5\".")
         driver.get("{}/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&test=true".format(self.base_url))
-        for i in range(60):
-            try:
-                if "visibility: hidden;" == driver.find_element_by_id("overlay").get_attribute("style"): break
-            except:
-                pass
-            time.sleep(1)
-        else: self.fail("time out")
-
-        print("XXXX")
+        time.sleep(10)
 
         # get current value of workflow selector drop-down list
         workflow_selector = Select(driver.find_element_by_id("workflowselector_select"))
@@ -64,12 +57,8 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         # clone reference task and explicitly set workflow version to "release_8"
         print("Cloning reference task, setting version to \"release_8\".")
         driver.get("{}/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22release_8%22}&test=true".format(self.base_url))
-        for i in range(60):
-            try:
-                if "visibility: hidden;" == driver.find_element_by_id("overlay").get_attribute("style"): break
-            except: pass
-            time.sleep(1)
-        else: self.fail("time out")
+        time.sleep(10)
+
         # verify that selected workflow version is "release_8"
         workflow_selector = Select(driver.find_element_by_id("workflowselector_select"))
         selected_workflow = workflow_selector.first_selected_option
@@ -82,12 +71,8 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         # clone reference task and set workflow version to "current"
         print("Cloning reference task, setting version to \"current\".")
         driver.get("{}/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22current%22}&test=true".format(self.base_url))
-        for i in range(60):
-            try:
-                if "visibility: hidden;" == driver.find_element_by_id("overlay").get_attribute("style"): break
-            except: pass
-            time.sleep(1)
-        else: self.fail("time out")
+        time.sleep(10)
+
         # verify that selected workflow version is "release_8"
         workflow_selector = Select(driver.find_element_by_id("workflowselector_select"))
         selected_workflow = workflow_selector.first_selected_option
