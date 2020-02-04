@@ -42,12 +42,15 @@ def test_provenance():
     full_query = "https://massive.ucsd.edu/ProteoSAFe/QueryResult?task=%s&file=%s&pageSize=0&offset=0&query=&totalRows=7495&_=1525380968458" % (massive_kb_library_task, filename)
     all_search_tasks = requests.get(full_query).json()["row_data"]
 
+    #Subsampling the provenance
+    all_search_tasks = all_search_tasks[:100]
+
     all_statuses = []
     for search_task in all_search_tasks:
         status = get_status(search_task)
         all_statuses.append(status)
 
-    all_error_statuses = [status for status in all_status if status.find("ERROR") != -1]
+    all_error_statuses = [status for status in all_statuses if status.find("ERROR") != -1]
     print("Number of Errors", len(all_error_statuses))
 
     assert(len(all_error_statuses) > 5, "Too Many Provenance Failures")
