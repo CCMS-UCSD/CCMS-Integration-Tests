@@ -30,8 +30,8 @@ jobs:
         pip install -r requirements.txt
     - name: Test with nose2
       env: # Or as an environment variable
-        CCMS_TESTUSER_PASSWORD: ${{ secrets.CCMS_TESTUSER_PASSWORD }}
         CCMS_TESTUSER_USERNAME: ${{ secrets.CCMS_TESTUSER_USERNAME }}
+        CCMS_TESTUSER_PASSWORD: ${{ secrets.CCMS_TESTUSER_PASSWORD }}
       run: |
         pip install nose2
         pip install selenium
