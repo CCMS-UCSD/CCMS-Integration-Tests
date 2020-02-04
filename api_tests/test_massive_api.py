@@ -6,3 +6,40 @@ def test_massive_apis():
 
     r = requests.get(url)
     r.raise_for_status()
+
+
+def test_massive_webpage():
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/datasets.jsp", timeout=10).raise_for_status() #Datasets Page
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Dataset Page
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=reanalysis&task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Reanalysese
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivehistory&massiveid=MSV000079514", timeout=10).raise_for_status()
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivesummary&massiveid=MSV000079514", timeout=10).raise_for_status()
+
+
+def test_massive_ftp():
+    import urllib.request
+
+
+    url = "ftp://massive.ucsd.edu/MSV000080469"
+    print(url)
+    urllib.request.urlopen(url)
+
+    url = "ftp://massive.ucsd.edu/MSV000079146"
+    print(url)
+    urllib.request.urlopen(url)
+
+    url = "ftp://massive.ucsd.edu/MSV000079339"
+    print(url)
+    urllib.request.urlopen(url)
+
+    url = "ftp://massive.ucsd.edu/MSV000079341"
+    print(url)
+    urllib.request.urlopen(url)
+
+    url = "ftp://massive.ucsd.edu/MSV000079344"
+    print(url)
+    urllib.request.urlopen(url)
+
+    url = "ftp://massive.ucsd.edu/MSV000080469/peak/AMG_mzXML/10317.000006947.mzXML"
+    print(url)
+    urllib.request.urlopen(url)
