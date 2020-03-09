@@ -12,7 +12,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         self.driver.implicitly_wait(30)
-        self.base_url = os.environ.get("SERVER_URL", "https://proteomics3.ucsd.edu")
+        self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -40,7 +40,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         else: self.fail("time out")
         # clone reference task (version "1.2.5") and verify that input form is loaded
         print("Cloning reference task with version \"1.2.5\".")
-        driver.get("{}/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&test=true".format(self.base_url))
+        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&test=true")
         
         time.sleep(2)
         
@@ -59,7 +59,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         self.assertEqual(version, "1.2.5")
         # clone reference task and explicitly set workflow version to "release_8"
         print("Cloning reference task, setting version to \"release_8\".")
-        driver.get("{}/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22release_8%22}&test=true".format(self.base_url))
+        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22release_8%22}&test=true")
         
         time.sleep(2)
 
@@ -77,7 +77,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         self.assertEqual(version, "release_8")
         # clone reference task and set workflow version to "current"
         print("Cloning reference task, setting version to \"current\".")
-        driver.get("{}/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22current%22}&test=true".format(self.base_url))
+        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22current%22}&test=true")
 
         time.sleep(2)
 
