@@ -49,7 +49,7 @@ def test_datasets(server_url):
 @params("gnps.ucsd.edu")
 def test_dataset_api(server_url):
     url = "    https://{}/ProteoSAFe/QueryDatasets?task=N%2FA&file=&pageSize=30&offset=0&query=%257B%2522query%2522%253A%257B%257D%252C%2522table_sort_history%2522%253A%2522createdMillis_dsc%2522%252C%2522title_input%2522%253A%2522GNPS%2522%257D&target=&_=1583795399976".format(server_url)
-    data = requests.get(url)
+    r = requests.get(url)
     r.raise_for_status()
 
 
