@@ -12,7 +12,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         self.driver.implicitly_wait(30)
-        self.base_url = os.environ.get("SERVER_URL", "https://proteomics3.ucsd.edu")
+        self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -38,65 +38,45 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        # clone reference task (version "1.2.5") and verify that input form is loaded
-        print("Cloning reference task with version \"1.2.5\".")
-        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&test=true")
-        
-        time.sleep(2)
-        
-        #else: self.fail("time out")
-        # get current value of workflow selector drop-down list
-        workflow_selector = Select(driver.find_element_by_id("workflowselector_select"))
-        selected_workflow = workflow_selector.first_selected_option
-        if not selected_workflow:
-            self.fail("Could not find selected workflow.")
-        # get selected workflow version; should be the same as the cloned task version
-        version = re.search(r'\((.*?)\)', selected_workflow.text).group(1)
-        print("Cloned to version", version)
 
-        if not version:
-            self.fail("could not extract version from selected workflow value [" + selected_workflow + "].")
-        self.assertEqual(version, "1.2.5")
-        # clone reference task and explicitly set workflow version to "release_8"
-        print("Cloning reference task, setting version to \"release_8\".")
-        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22release_8%22}&test=true")
+        # clone reference task (version "release_14") and verify that input form is loaded
+        print("Cloning reference task with version release_14")
+        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=0d5863e169464a069005c111ada37c30&test=true")
         
         time.sleep(2)
 
-        #else: self.fail("time out")
-        # verify that selected workflow version is "release_8"
-        workflow_selector = Select(driver.find_element_by_id("workflowselector_select"))
-        selected_workflow = workflow_selector.first_selected_option
-        if not selected_workflow:
-            self.fail("Could not find selected workflow.")
-        version = re.search(r'\((.*?)\)', selected_workflow.text).group(1)
-        print("Cloned to version", version)
+        # Assuming there is only one small tag in the page, this could be violated later
+        small_tags = driver.find_element_by_tag_name("small")
+        version_text = small_tags.text
+        version = version_text.replace("Version ", "")
+        self.assertEqual(version, "release_14")
 
-        if not version:
-            self.fail("could not extract version from selected workflow value [" + selected_workflow + "].")
-        self.assertEqual(version, "release_8")
-        # clone reference task and set workflow version to "current"
-        print("Cloning reference task, setting version to \"current\".")
+
+        # Cloning to version release_17
+        print("Cloning reference task with version release_17")
+        driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=0d5863e169464a069005c111ada37c30&params={%22workflow_version%22:%22release_17%22}&test=true")
+
+        time.sleep(2)
+
+        # Assuming there is only one small tag in the page, this could be violated later
+        small_tags = driver.find_element_by_tag_name("small")
+        version_text = small_tags.text
+        version = version_text.replace("Version ", "")
+        self.assertEqual(version, "release_17")
+
+        # Cloning to current, should be release_18 or greater
+        print("Cloning reference task with version release_18")
         driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=e95433bf446741dfb10fbe94153bfaee&params={%22workflow_version%22:%22current%22}&test=true")
 
         time.sleep(2)
 
-        #else: self.fail("time out")
-        # verify that selected workflow version is "release_8"
-        workflow_selector = Select(driver.find_element_by_id("workflowselector_select"))
-        selected_workflow = workflow_selector.first_selected_option
-        if not selected_workflow:
-            self.fail("Could not find selected workflow.")
-        version = re.search(r'\((.*?)\)', selected_workflow.text).group(1)
-        print("Cloned to version", version)
+        # Assuming there is only one small tag in the page, this could be violated later
+        small_tags = driver.find_element_by_tag_name("small")
+        version_text = small_tags.text
+        version = version_text.replace("Version ", "")
+        self.assertNotEqual(version, "release_14")
+        self.assertNotEqual(version, "release_17")
 
-        if not version:
-            self.fail("could not extract version from selected workflow value [" + selected_workflow + "].")
-        # the current version will presumably change over time, but it
-        # should always be different from both versions already tested
-        self.assertNotEqual(version, "1.2.5")
-        self.assertNotEqual(version, "release_8")
-        
     
     def is_element_present(self, how, what):
         try: 
