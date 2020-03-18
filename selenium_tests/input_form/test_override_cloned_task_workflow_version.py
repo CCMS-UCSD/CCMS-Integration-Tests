@@ -12,7 +12,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         self.driver.implicitly_wait(30)
-        self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
+        self.base_url = os.environ.get("SERVER_URL", "https://proteomics3.ucsd.edu")
         self.verificationErrors = []
         self.accept_next_alert = True
     
