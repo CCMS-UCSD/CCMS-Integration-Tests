@@ -43,3 +43,12 @@ def test_massive_ftp():
     url = "ftp://massive.ucsd.edu/MSV000080469/peak/AMG_mzXML/10317.000006947.mzXML"
     print(url)
     urllib.request.urlopen(url)
+    
+def msstats_annotation_servlet():
+    url = "https://ccms-internal.ucsd.edu/ProteoSAFe/MSStatsAnnotationServlet?filepath=f.benpullman%2FMSV000080025_mplex_calu3_MERS_CoV_response.csv%3B&header=Condition"
+    r = requests.get(url)
+    r.raise_for_status()
+    
+    url ="https://ccms-internal.ucsd.edu/ProteoSAFe/MSStatsAnnotationServlet?filepath=f.benpullman%2FMSV000080025_mplex_calu3_MERS_CoV_response.csv%3B&header=Missing"
+    r = requests.get(url)
+    assert(r.status_code == 400)
