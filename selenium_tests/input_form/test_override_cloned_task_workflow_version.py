@@ -34,8 +34,12 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         driver.find_element_by_name("login").click()
         for i in range(60):
             try:
-                if "Successful login" == driver.find_element_by_xpath("//h1").text: break
-            except: pass
+                if "Successful login" == driver.find_element_by_xpath("//h1").text:
+                    print("Successful login")
+                    break
+            except:
+                raise
+                pass
             time.sleep(1)
         else: self.fail("time out")
 
@@ -43,7 +47,11 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         print("Cloning reference task with version release_14")
         driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=0d5863e169464a069005c111ada37c30&test=true")
         
-        time.sleep(2)
+        time.sleep(5)
+
+        driver.find_element_by_name("searchinterface")
+        print(driver.page_source.encode("utf-8"))
+
 
         # Assuming there is only one small tag in the page, this could be violated later
         small_tags = driver.find_element_by_tag_name("small")
@@ -56,7 +64,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         print("Cloning reference task with version release_17")
         driver.get(self.base_url + "/ProteoSAFe/index.jsp?task=0d5863e169464a069005c111ada37c30&params={%22workflow_version%22:%22release_17%22}&test=true")
 
-        time.sleep(2)
+        time.sleep(5)
 
         # Assuming there is only one small tag in the page, this could be violated later
         small_tags = driver.find_element_by_tag_name("small")
