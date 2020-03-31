@@ -66,3 +66,22 @@ We rely on the continuous integration from github actions. There are several ste
 
 We run the tests once every 24 hours. Additionally, we enable a way to manually enable all of them to run. This is used when there is new code that will want to be deployed. 
 Please create a pull request and then only admins can lock and then unlock the conversation. This unlock operation triggers the workflows to run. 
+
+## Manually Running API/Selenium Tests
+
+To manually run these tests, we will be using nose2. You will have to explicitly set the SERVER_URL and CCMS_TESTUSER_PASSWORD environment variables. 
+
+```
+cd api_tests
+nose2 -v
+```
+
+```
+cd selenium_tests/input_form
+nose2 -v
+```
+
+```
+cd selenium_tests/result_views
+nose2 -v
+```
