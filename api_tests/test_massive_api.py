@@ -1,4 +1,5 @@
 import requests
+from nose2.tools import params
 
 
 def test_massive_apis():
@@ -7,13 +8,13 @@ def test_massive_apis():
     r = requests.get(url)
     r.raise_for_status()
 
-
-def test_massive_webpage():
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/datasets.jsp", timeout=10).raise_for_status() #Datasets Page
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Dataset Page
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=reanalysis&task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Reanalysese
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivehistory&massiveid=MSV000079514", timeout=10).raise_for_status()
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivesummary&massiveid=MSV000079514", timeout=10).raise_for_status()
+@params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
+def test_massive_webpage(server_url):
+    requests.get("https://{}/ProteoSAFe/datasets.jsp".format(server_url), timeout=10).raise_for_status() #Datasets Page
+    requests.get("https://{}/ProteoSAFe/dataset.jsp?task=fd246a746e0749c5ad0403be265bb2ea".format(server_url), timeout=10).raise_for_status() #Dataset Page
+    requests.get("https://{}/ProteoSAFe/MassiveServlet?function=reanalysis&task=fd246a746e0749c5ad0403be265bb2ea".format(server_url), timeout=10).raise_for_status() #Reanalysese
+    requests.get("https://{}/ProteoSAFe/MassiveServlet?function=massivehistory&massiveid=MSV000079514".format(server_url), timeout=10).raise_for_status()
+    requests.get("https://{}/ProteoSAFe/MassiveServlet?function=massivesummary&massiveid=MSV000079514".format(server_url), timeout=10).raise_for_status()
 
 
 def test_massive_ftp():
