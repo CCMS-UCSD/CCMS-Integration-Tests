@@ -1,2 +1,4 @@
 requests
 requests_cache
+selenium
+nose2
