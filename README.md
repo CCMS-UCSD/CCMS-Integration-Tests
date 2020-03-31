@@ -69,19 +69,14 @@ Please create a pull request and then only admins can lock and then unlock the c
 
 ## Manually Running API/Selenium Tests
 
-To manually run these tests, we will be using nose2. You will have to explicitly set the SERVER_URL and CCMS_TESTUSER_PASSWORD environment variables. 
+To manually run these tests, we will be using nose2. You will have to explicitly set the CCMS_TESTUSER_PASSWORD environment variables. We will use the act program found [here](https://github.com/nektos/act). 
+
+Now we can simulate actions in github that will force the running of these actions:
 
 ```
-cd api_tests
-nose2 -v
-```
-
-```
-cd selenium_tests/input_form
-nose2 -v
+make test-push
 ```
 
 ```
-cd selenium_tests/result_views
-nose2 -v
+make test-schedule
 ```
