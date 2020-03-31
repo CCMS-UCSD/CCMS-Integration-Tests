@@ -2,3 +2,5 @@ requests
 requests_cache
 selenium
 nose2
+xmltodict
+pandas
