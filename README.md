@@ -69,13 +69,20 @@ Please create a pull request and then only admins can lock and then unlock the c
 
 ## Manually Running API/Selenium Tests
 
-To manually run these tests, we will be using nose2. You will have to explicitly set the CCMS_TESTUSER_PASSWORD environment variables. We will use the act program found [here](https://github.com/nektos/act). 
+To manually run these tests, we will be using nose2. You will have to either:
+
+1. Create a Makefile.credentials file that includes CCMS_TESTUSER_USERNAME and CCMS_TESTUSER_PASSWORD
+2. Explicitly set the CCMS_TESTUSER_USERNAME and CCMS_TESTUSER_PASSWORD environment variables. 
+
+We will use the act program found [here](https://github.com/nektos/act). 
 
 Now we can simulate actions in github that will force the running of these actions:
 
 ```
 make test-push
 ```
+
+This will run most of the tests including all the workflow tests. 
 
 ```
 make test-schedule
