@@ -1,4 +1,4 @@
-name: workflow-integration-beta-misc
+name: workflow-beta-misc
 
 on:
   pull_request:

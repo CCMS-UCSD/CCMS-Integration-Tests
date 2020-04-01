@@ -1,4 +1,4 @@
-name: workflow-integration-beta-librarysearchv2
+name: workflow-beta-librarysearchv2
 
 on:
   pull_request:

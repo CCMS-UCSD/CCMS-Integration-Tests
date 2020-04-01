@@ -1,4 +1,4 @@
-name: workflow-integration-gnps-fbmn
+name: workflow-gnps-fbmn
 
 on:
   pull_request:

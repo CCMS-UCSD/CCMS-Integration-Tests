@@ -1,4 +1,4 @@
-name: workflow-integration-beta-networkingv2
+name: workflow-beta-networkingv2
 
 on:
   pull_request:

@@ -1,4 +1,4 @@
-name: workflow-integration-beta-fbmn
+name: workflow-beta-fbmn
 
 on:
   pull_request:

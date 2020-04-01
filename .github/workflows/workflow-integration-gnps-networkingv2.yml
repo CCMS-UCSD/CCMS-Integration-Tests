@@ -1,4 +1,4 @@
-name: workflow-integration-gnps-networkingv2
+name: workflow-gnps-networkingv2
 
 on:
   pull_request:

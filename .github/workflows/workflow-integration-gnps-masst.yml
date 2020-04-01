@@ -1,4 +1,4 @@
-name: workflow-integration-gnps-masst
+name: workflow-gnps-masst
 
 on:
   pull_request:

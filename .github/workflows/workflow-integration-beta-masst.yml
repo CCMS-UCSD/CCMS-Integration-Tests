@@ -1,4 +1,4 @@
-name: workflow-integration-beta-masst
+name: workflow-beta-masst
 
 on:
   pull_request:

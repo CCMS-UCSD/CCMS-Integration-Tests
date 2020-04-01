@@ -1,4 +1,4 @@
-name: workflow-integration-gnps-librarysearchv2
+name: workflow-gnps-librarysearchv2
 
 on:
   pull_request:

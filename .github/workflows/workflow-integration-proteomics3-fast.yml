@@ -1,4 +1,4 @@
-name: workflow-integration-proteomics3-fast
+name: workflow-proteomics3-fast
 
 on:
   push:
