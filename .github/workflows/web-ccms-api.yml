@@ -8,10 +8,8 @@ on:
    - cron:  '*/60 * * * *'
 
 jobs:
-  build:
-
+  api-test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
       with:
