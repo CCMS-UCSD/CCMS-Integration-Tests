@@ -1,37 +1,30 @@
-name: workflow-integration-gnps-fast
+name: workflow-gnps-librarysearchv2
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types: [unlocked]
   schedule:
-   - cron:  '5 * * * *'
+   - cron:  '7 6 * * *'
 
 jobs:
-  workflow-test:
+  workflow-gnps-library-test:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
-      matrix:
-        python-version: [3.7]
 
     steps:
     - uses: actions/checkout@v1
       with:
         submodules: recursive
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.7
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install xmltodict
-        pip install requests
-        pip install pandas
+        pip install xmltodict requests pandas
     - name: Run Tests
       run: |
         python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
         --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
         --credential_server gnps.ucsd.edu \
-        --workflow_task_file CCMSDeployments/fast_test_workflow/test-integration-workflow/test_tasks.tsv
+        --workflow_task_file GNPS_Workflows/molecular-librarysearch-v2/test-integration-workflow/test_tasks.csv
