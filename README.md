@@ -92,14 +92,13 @@ To manually run these tests, we will be using nose2. You will have to either:
 
 We will use the act program found [here](https://github.com/nektos/act). 
 
-Now we can simulate actions in github that will force the running of these actions:
-
+Run this:
 ```
 make test-push
 ```
+to simulate a push of commits to the repo. This will include selenium and api tests. 
 
-This will run most of the tests including all the workflow tests. 
-
+Run this to run nearly everything including workflow tests. 
 ```
 make test-schedule
 ```
