@@ -45,5 +45,5 @@ jobs:
         cd selenium_tests/input_form && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
 
         # GNPS Pages
-        cd selenium_tests/gnps_page && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
-        cd selenium_tests/gnps_page && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
+        cd selenium_tests/gnps_pages && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
+        cd selenium_tests/gnps_pages && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
