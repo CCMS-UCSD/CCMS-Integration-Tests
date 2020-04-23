@@ -31,6 +31,22 @@
 | Legacy Networking  | [Workflow](https://gnps.ucsd.edu/ProteoSAFe/index.jsp?params=%7B%22workflow%22:%22METABOLOMICS-SNETS%22,%22library_on_server%22:%22d.speclibs;%22%7D)  | --- | --- | ![](https://github.com/CCMS-UCSD/CCMS-Integration-Tests/workflows/workflow-gnps-legacynetworking/badge.svg) | 
 | Legacy Library Search  | [Workflow](https://gnps.ucsd.edu/ProteoSAFe/index.jsp?params=%7B%22workflow%22:%22MOLECULAR-LIBRARYSEARCH%22,%22library_on_server%22:%22d.speclibs;%22%7D)   | --- |---| ![](https://github.com/CCMS-UCSD/CCMS-Integration-Tests/workflows/workflow-gnps-librarysearch/badge.svg) | 
 
+## Selenium Testing
+
+In order to have selenium tests run, we recommend placing them in the appropriate locations depending on what they are testing:
+
+```
+selenium_tests/input_form/
+```
+
+and 
+
+```
+selenium_tests/result_views/
+```
+
+These two locations are called automatically with ```nose2``` with github actions. To run them manually, see below. 
+
 
 
 ## Testing Workflows
@@ -52,7 +68,7 @@ Additionally, we have integrated this utility into github actions but can be cal
 where the utility can be found in testing-utilities. 
 
 
-## Adding your own Github Actions Tests
+### Adding your own Github Actions Tests for Workflows
 
 We rely on the continuous integration from github actions. There are several steps you'll need to accomplish:
 
@@ -76,14 +92,12 @@ To manually run these tests, we will be using nose2. You will have to either:
 
 We will use the act program found [here](https://github.com/nektos/act). 
 
-Now we can simulate actions in github that will force the running of these actions:
-
+To simulate a push of commits to the repo (which will include Selenium and API tests), run this command:
 ```
 make test-push
 ```
-
-This will run most of the tests including all the workflow tests. 
-
+ 
+To run nearly everything (including workflow tests), run this command: 
 ```
 make test-schedule
 ```
