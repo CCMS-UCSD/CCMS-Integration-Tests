@@ -29,9 +29,21 @@ jobs:
       run: |
         pip install nose2
         pip install selenium
+        
+        # Proteomics Result Views
+        cd selenium_tests/proteomics_result_views && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
+        # cd selenium_tests/proteomics_result_views && export SERVER_URL="https://massive.ucsd.edu" && nose2 -v && cd ../..
+        
+        # Results Views
         cd selenium_tests/result_views && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
         cd selenium_tests/result_views && export SERVER_URL="https://proteomics2.ucsd.edu" && nose2 -v && cd ../..
         cd selenium_tests/result_views && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
+
+        # Input Forms
         cd selenium_tests/input_form && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
         cd selenium_tests/input_form && export SERVER_URL="https://proteomics2.ucsd.edu" && nose2 -v && cd ../..
         cd selenium_tests/input_form && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
+
+        # GNPS Pages
+        cd selenium_tests/gnps_page && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
+        cd selenium_tests/gnps_page && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
