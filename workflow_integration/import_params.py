@@ -14,8 +14,6 @@ def import_params_to_dict(server_url, task_id):
     response_text = response.text
     params = xmltodict.parse(response_text)
 
-    print(json.dumps(params,indent = 4))
-
     return params
 
 def reformat_params(params, blacklist={'task','upload_file_mapping','uuid','user','workflow_version'}):

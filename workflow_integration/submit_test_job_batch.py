@@ -60,7 +60,7 @@ def wait_for_workflow_finish(task_id, max_time, credentials):
 
     try:
         url = 'https://' + credentials['server_url'] + '/ProteoSAFe/status_json.jsp?task=' + task_id
-        r = requests.get(url, verify=False)
+        r = requests.get(url)
         json_obj = r.json()
     except:
         print(r.text)
@@ -77,7 +77,7 @@ def wait_for_workflow_finish(task_id, max_time, credentials):
             exit(1)
 
         try:
-            json_obj = json.loads(requests.get(url, verify=False).text)
+            json_obj = json.loads(requests.get(url).text)
         except KeyboardInterrupt:
             raise
         except:
