@@ -9,11 +9,9 @@ from collections import defaultdict
 def import_params_to_dict(server_url, task_id):
     params = {}
     full_url = "https://" + server_url + "/ProteoSAFe/ManageParameters"
-    print(full_url)
     response = requests.get(full_url, params={"task" : task_id})
 
     response_text = response.text
-    print(response_text, task_id)
     params = xmltodict.parse(response_text)
 
     print(json.dumps(params,indent = 4))

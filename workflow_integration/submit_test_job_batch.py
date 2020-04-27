@@ -33,13 +33,10 @@ def invoke_workflow(credentials, parameters):
 
     task_id = r_invoke.text
 
-    print(task_id)
-
     if len(task_id) > 4 and len(task_id) < 60:
         print("Launched Task: {}".format(task_id))
         return task_id
     else:
-        print(task_id)
         return None
 
 def delete_task(task_id, credentials):
