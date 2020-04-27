@@ -29,7 +29,6 @@ selenium_tests/result_views/
 These two locations are called automatically with ```nose2``` with github actions. To run them manually, see below. 
 
 
-
 ## Testing Workflows
 
 In order to test workflows in a production setting, we have created a utility to do that. Specificaly, if a csv file containing test tasks is provided, then they will be run. 
