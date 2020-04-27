@@ -1,136 +1,135 @@
 name: workflow-beta
 
 on:
-    pull_request:
-        types: [unlocked]
-    schedule:
+  pull_request:
+    types: [unlocked]
+  schedule:
     - cron:  '0 12 * * *'
 
 jobs:
-    workflow-beta-networking-test:
-        runs-on: ubuntu-latest
-    
-        steps:
-        - uses: actions/checkout@v1
+  workflow-beta-networking-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install xmltodict requests pandas
+    - name: Run Tests
+      run: |
+        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+        --credential_server proteomics3.ucsd.edu \
+        --workflow_task_file GNPS_Workflows/metabolomics-snets-v2/test-integration-workflow/test_tasks.csv
+
+  workflow-beta-fbmn-test:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v1
         with:
-            submodules: recursive
-        - name: Set up Python 3.7
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.7
-        - name: Install dependencies
-          run: |
-            python -m pip install --upgrade pip
-            pip install xmltodict requests pandas
-        - name: Run Tests
-          run: |
-            python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-            --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-            --credential_server proteomics3.ucsd.edu \
-            --workflow_task_file GNPS_Workflows/metabolomics-snets-v2/test-integration-workflow/test_tasks.csv
-            
-    workflow-beta-fbmn-test:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-            with:
-                submodules: recursive
-        - name: Set up Python 3.7
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.7
-        - name: Install dependencies
-            run: |
-            python -m pip install --upgrade pip
-            pip install xmltodict requests pandas
-        - name: Run Tests
-            run: |
-            python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-            --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-            --credential_server proteomics3.ucsd.edu \
-            --workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv
+          submodules: recursive
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install xmltodict requests pandas
+      - name: Run Tests
+        run: |
+          python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+          --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+          --credential_server proteomics3.ucsd.edu \
+          --workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv
 
-    workflow-beta-library-test:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-            with:
-                submodules: recursive
-        - name: Set up Python 3.7
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.7
-        - name: Install dependencies
-            run: |
-            python -m pip install --upgrade pip
-            pip install xmltodict requests pandas
-        - name: Run Tests
-            run: |
-            python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-            --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-            --credential_server proteomics3.ucsd.edu \
-            --workflow_task_file GNPS_Workflows/molecular-librarysearch-v2/test-integration-workflow/test_tasks.csv
+  workflow-beta-library-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install xmltodict requests pandas
+    - name: Run Tests
+      run: |
+        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+        --credential_server proteomics3.ucsd.edu \
+        --workflow_task_file GNPS_Workflows/molecular-librarysearch-v2/test-integration-workflow/test_tasks.csv
+  
+  workflow-beta-masst-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install xmltodict requests pandas
+    - name: Run Tests
+      run: |
+        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+        --credential_server proteomics3.ucsd.edu \
+        --workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv
 
-    workflow-beta-masst-test:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-            with:
-                submodules: recursive
-        - name: Set up Python 3.7
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.7
-        - name: Install dependencies
-            run: |
-            python -m pip install --upgrade pip
-            pip install xmltodict requests pandas
-        - name: Run Tests
-            run: |
-            python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-            --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-            --credential_server proteomics3.ucsd.edu \
-            --workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv
-    
-    workflow-beta-qemistree-test:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-            with:
-                submodules: recursive
-        - name: Set up Python 3.7
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.7
-        - name: Install dependencies
-            run: |
-            python -m pip install --upgrade pip
-            pip install xmltodict requests pandas
-        - name: Run Tests
-            run: |
-            python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-            --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-            --credential_server proteomics3.ucsd.edu \
-            --workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv
+  workflow-beta-qemistree-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install xmltodict requests pandas
+    - name: Run Tests
+      run: |
+        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+        --credential_server proteomics3.ucsd.edu \
+        --workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv
 
-    workflow-beta-misc-test:
-        runs-on: ubuntu-latest
-    
-        steps:
-        - uses: actions/checkout@v1
-            with:
-                submodules: recursive
-        - name: Set up Python 3.7
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.7
-        - name: Install dependencies
-            run: |
-            python -m pip install --upgrade pip
-            pip install xmltodict requests pandas
-        - name: Run Tests
-            run: |
-            python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-            --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-            --credential_server proteomics3.ucsd.edu \
-            --workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
+  workflow-beta-misc-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install xmltodict requests pandas
+    - name: Run Tests
+      run: |
+        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+        --credential_server proteomics3.ucsd.edu \
+        --workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
