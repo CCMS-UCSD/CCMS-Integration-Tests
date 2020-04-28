@@ -30,7 +30,7 @@ class TestInterfaceready(unittest.TestCase):
         elements = self.driver.find_element_by_id("other_library_spectra.library_membership_input")
 
     def test_library_page_table2(self):
-        self.driver.get("{}/ProteoSAFe/gnpslibrary.jsp?library=GNPS-LIBRARY?test=true".format(self.base_url))
+        self.driver.get("{}/ProteoSAFe/gnpslibrary.jsp?library=GNPS-LIBRARY&test=true".format(self.base_url))
         
         time.sleep(5)
         
