@@ -15,3 +15,26 @@ def test_internal_gnps_api():
     url = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true"
     r = requests.get(url)
     r.raise_for_status()
+
+
+def test_internal_proteomics2_api():
+    # Testing MGF
+    url = "https://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.mgf&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true"
+    r = requests.get(url)
+    r.raise_for_status()
+
+    # Testing mzXML
+    url = "https://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true"
+    r = requests.get(url)
+    r.raise_for_status()
+
+def test_internal_proteomics3_api():
+    # Testing MGF
+    url = "https://proteomics3.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.mgf&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true"
+    r = requests.get(url)
+    r.raise_for_status()
+
+    # Testing mzXML
+    url = "https://proteomics3.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true"
+    r = requests.get(url)
+    r.raise_for_status()
