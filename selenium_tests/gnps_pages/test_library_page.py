@@ -14,7 +14,7 @@ import os
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
-        self.driver.implicitly_wait(1)
+        self.driver.implicitly_wait(15)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.vars = {}
 
