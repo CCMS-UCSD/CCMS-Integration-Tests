@@ -52,3 +52,10 @@ def msstats_annotation_servlet():
     url ="https://ccms-internal.ucsd.edu/ProteoSAFe/MSStatsAnnotationServlet?filepath=f.benpullman%2FMSV000080025_mplex_calu3_MERS_CoV_response.csv%3B&header=Missing"
     r = requests.get(url)
     assert(r.status_code == 400)
+
+def test_massive_usi():
+    url = "https://massive.ucsd.edu/ProteoSAFe/QuerySpectrum?id=mzspec%3ARMSV000000308.2%3Apeak%2Fspecs_ms.mgf%3Aindex%3A262144%3A%5B229.162932%5D-EMEAELEDERK%5B229.163%5D&_=1588805688884"
+    r = requests.get(url)
+    r.raise_for_status()
+
+    assert("f.RMSV" in r.json()["row_data"][0]["file_descriptor"])
