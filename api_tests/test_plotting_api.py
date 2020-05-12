@@ -40,30 +40,42 @@ def test_json_api():
 
     # mzXML test
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=fd246a746e0749c5ad0403be265bb2ea&block=0&file=FILE-%3Ef.MSV000079514%2Fccms_peak%2FRAW%2FAdrenal%20gland%2FLTQ-Orbitrap%20Elite%2F49%2FAdult_Adrenalgland_Gel_Elite_49_f01.mzXML&scan=524&index=-1&peptide=*..*&trim=true&format=JSON&force=true".format(server_url)
+    print(url)
     r = requests.get(url, verify=False)
     r.raise_for_status()
     r.json()
 
     # mzML test
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&file=FILE-%3Ef.MSV000079514%2Fccms_peak%2FAdrenal%20gland%2FLTQ-Orbitrap%20Elite%2F49%2FAdult_Adrenalgland_Gel_Elite_49_f01.mzML&scan=524&index=-1&peptide=*..*&trim=true&format=JSON&force=true".format(server_url)
+    print(url)
     r = requests.get(url, verify=False)
     r.raise_for_status()
     r.json()
 
     # Testing MGF
-    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.mgf&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true".format(server_url)
+    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.mgf&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true&format=JSON".format(server_url)
+    print(url)
     r = requests.get(url)
     r.raise_for_status()
     r.json()
 
     # Testing PKLBIN
-    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.pklbin&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true".format(server_url)
+    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.pklbin&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true&format=JSON".format(server_url)
+    print(url)
     r = requests.get(url)
     r.raise_for_status()
     r.json()
 
     # Testing mzXML
-    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true".format(server_url)
+    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true&format=JSON".format(server_url)
+    print(url)
+    r = requests.get(url)
+    r.raise_for_status()
+    r.json()
+
+    # Testing MS1 scan
+    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&file=FILE-%3Ef.MSV000079514%2Fccms_peak%2FAdrenal%20gland%2FLTQ-Orbitrap%20Elite%2F49%2FAdult_Adrenalgland_Gel_Elite_49_f01.mzML&scan=521&index=-1&peptide=*..*&trim=true&format=JSON&force=true".format(server_url)
+    print(url)
     r = requests.get(url)
     r.raise_for_status()
     r.json()
