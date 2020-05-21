@@ -45,6 +45,13 @@ def test_json_api():
     r.raise_for_status()
     r.json()
 
+    # mzXML test, bruker test
+    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&file=FILE-%3EMSV000078556%2Fccms_peak%2FHuman_Swabs%2FMan%2F3m__BA12_01_1117.mzXML&scan=4146&peptide=*..*&uploadfile=True&task=4f2ac74ea114401787a7e96e143bb4a1&force=true&format=JSON".format(server_url)
+    print(url)
+    r = requests.get(url)
+    r.raise_for_status()
+    r.json()
+
     # mzXML test, index
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&format=JSON&file=FILE-%3EMSV000079514%2Fccms_peak%2FRAW%2FAdrenal%20gland%2FLTQ-Orbitrap%20Elite%2F49%2FAdult_Adrenalgland_Gel_Elite_49_f01.mzXML&index=11&peptide=*..*&uploadfile=True&task=4f2ac74ea114401787a7e96e143bb4a1&force=true".format(server_url)
     print(url)
