@@ -11,6 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 import unittest, time, re
 import os
 
+import warnings
+warnings.filterwarnings('ignore')
+
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
@@ -23,7 +26,9 @@ class TestInterfaceready(unittest.TestCase):
 
     # This makes sure on client side tables, the autohiding works
     def test_client_table_autohide(self):
-        self.driver.get("{}/ProteoSAFe/result.jsp?task=120ab12f58594dd29c5a71de529a9686&view=view_result_list&test=true".format(self.base_url))
+        url = "{}/ProteoSAFe/result.jsp?task=120ab12f58594dd29c5a71de529a9686&view=view_result_list&test=true".format(self.base_url)
+        print(url)
+        self.driver.get(url)
         
         time.sleep(5)
 
@@ -37,7 +42,9 @@ class TestInterfaceready(unittest.TestCase):
 
     # This makes sure on server side tables, the autohiding works
     def test_server_table_autohide(self):
-        self.driver.get("{}/ProteoSAFe/result.jsp?task=120ab12f58594dd29c5a71de529a9686&view=group_by_spectrum&file=f.MSV000079852%2Fccms_result%2Fresult%2FColorectalCancer%2FTCGA-A6-3807-01A-22_Proteome_VU_20121019.mzTab&test=true".format(self.base_url))
+        url = "{}/ProteoSAFe/result.jsp?task=120ab12f58594dd29c5a71de529a9686&view=group_by_spectrum&file=f.MSV000079852%2Fccms_result%2Fresult%2FColorectalCancer%2FTCGA-A6-3807-01A-22_Proteome_VU_20121019.mzTab&test=true".format(self.base_url)
+        print(url)
+        self.driver.get(url)
         
         time.sleep(5)
         

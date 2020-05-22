@@ -8,6 +8,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 import unittest, time, re
 import os
 
+import warnings
+warnings.filterwarnings('ignore')
+
 class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()

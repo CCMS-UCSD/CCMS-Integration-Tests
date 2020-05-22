@@ -11,6 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 import unittest, time, re
 import os
 
+import warnings
+warnings.filterwarnings('ignore')
+
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()

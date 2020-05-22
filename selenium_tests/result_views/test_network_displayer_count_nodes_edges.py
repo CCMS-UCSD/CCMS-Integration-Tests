@@ -10,6 +10,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 import unittest, time, re
 
+import warnings
+warnings.filterwarnings('ignore')
 
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
