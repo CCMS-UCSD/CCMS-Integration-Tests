@@ -34,9 +34,8 @@ def test_internal_old_api(server_url):
     r = requests.get(url)
     r.raise_for_status()
 
-
-def test_json_api():
-    server_url = "proteomics3.ucsd.edu"
+@params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
+def test_json_api(server_url):
 
     # mzXML test, scan
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=fd246a746e0749c5ad0403be265bb2ea&block=0&file=FILE-%3Ef.MSV000079514%2Fccms_peak%2FRAW%2FAdrenal%20gland%2FLTQ-Orbitrap%20Elite%2F49%2FAdult_Adrenalgland_Gel_Elite_49_f01.mzXML&scan=524&index=-1&peptide=*..*&trim=true&format=JSON&force=true".format(server_url)
