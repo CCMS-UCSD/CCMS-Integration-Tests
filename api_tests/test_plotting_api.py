@@ -45,12 +45,11 @@ def test_json_api():
     r.raise_for_status()
     r.json()
 
-    # mzXML test, old bruker test
+    # mzXML test, old bruker test, we know this will fail
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&file=FILE-%3EMSV000078556%2Fccms_peak%2FHuman_Swabs%2FMan%2F3m__BA12_01_1117.mzXML&scan=4146&peptide=*..*&uploadfile=True&task=4f2ac74ea114401787a7e96e143bb4a1&force=true&format=JSON".format(server_url)
     print(url)
     r = requests.get(url)
-    r.raise_for_status()
-    r.json()
+    assert(r.status_code == 500)
 
     # mzXML test, newer bruker test
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&file=FILE-%3EMSV000085120%2Fpeak%2FPlate%202%2FBAX100_5x_GB1_01_23264.mzXML&scan=503&peptide=*..*&uploadfile=True&task=4f2ac74ea114401787a7e96e143bb4a1&force=true&format=JSON".format(server_url)
