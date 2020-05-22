@@ -20,11 +20,23 @@ class TestInterfaceready(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_interfaceready_gnps(self):
-        self.driver.get("{}/ProteoSAFe/result.jsp?view=network_displayer&componentindex=3&task=5b4fa89c73344360b8b915a3af9ea7d4&test=true".format(self.base_url))
-        WebDriverWait(self.driver, 30).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, ".fa-check-circle")))
-        elements = self.driver.find_elements(By.CSS_SELECTOR, ".fa-check-circle")
-        assert len(elements) > 0
+    def test_gnps_fbmn(self):
+        self.driver.get("{}/ProteoSAFe/result.jsp?task=269d0b4eaa8d465ca6d95527af04feae&view=view_all_annotations_DB&test=true".format(self.base_url))
+        
+        time.sleep(5)
+        
+        # Checking that this does exist
+        elements = self.driver.find_element_by_id("main.#Scan#_lowerinput")
+
+    def test_gnps_networking(self):
+        self.driver.get("{}/ProteoSAFe/result.jsp?task=92b9d140de144bb1afc0f0775858d453&view=view_raw_spectra&test=true".format(self.base_url))
+        
+        time.sleep(5)
+        
+        # Checking that this does exist
+        elements = self.driver.find_element_by_id("main.AllFiles_input")
+
+    
 
 
 if __name__ == "__main__":
