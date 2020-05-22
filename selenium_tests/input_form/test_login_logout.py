@@ -8,6 +8,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest, time, re
 
+import warnings
+warnings.filterwarnings('ignore')
+
 class Proteomics2LoginLogout(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
