@@ -34,7 +34,7 @@ def test_internal_old_api(server_url):
     r = requests.get(url)
     r.raise_for_status()
 
-@params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
+@params("gnps.ucsd.edu", "proteomics3.ucsd.edu", "massive.ucsd.edu")
 def test_json_api(server_url):
 
     # mzXML test, scan
