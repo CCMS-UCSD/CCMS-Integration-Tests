@@ -37,6 +37,7 @@ def invoke_workflow(credentials, parameters):
         print("Launched Task: {}".format(task_id))
         return task_id
     else:
+        print(r_invoke.text)
         return None
 
 def delete_task(task_id, credentials):
@@ -135,6 +136,7 @@ def main():
 
             task_id = invoke_workflow(credentials, param_object)
             if task_id == None:
+                print("Task Invocation Failed, Exiting")
                 exit(1)
             
             time.sleep(15)
@@ -156,6 +158,7 @@ def main():
 
             new_task_id = invoke_workflow(credentials, param_object)
             if new_task_id == None:
+                print("Task Invocation Failed, Exiting")
                 exit(1)
             
             time.sleep(15)
@@ -182,6 +185,7 @@ def main():
 
             new_task_id = invoke_workflow(credentials, param_object)
             if new_task_id == None:
+                print("Task Invocation Failed, Exiting")
                 exit(1)
             
             time.sleep(15)

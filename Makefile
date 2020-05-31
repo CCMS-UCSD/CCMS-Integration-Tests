@@ -58,10 +58,58 @@ test-workflow-gnps-networking:
 
 ## Manual Workflow Test outside of Act
 
-test-manual-gnps-workflow:
+test-manual-gnps-networking:
 	python workflow_integration/submit_test_job_batch.py \
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/metabolomics-snets-v2/test-integration-workflow/test_tasks.csv
+
+test-manual-gnps-fbmn:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv
+
+test-manual-gnps-library:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/molecular-librarysearch-v2/test-integration-workflow/test_tasks.csv
+
+test-manual-gnps-masst:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv
+
+test-manual-gnps-gc:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/molecular-librarysearch-gc/test-integration-workflow/test_tasks.csv
+
+test-manual-gnps-mergepolarity:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu 
 	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv
+
+test-manual-gnps-misc:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu 
+	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
