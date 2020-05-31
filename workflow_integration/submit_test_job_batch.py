@@ -218,6 +218,13 @@ def main():
     # Regression Tests
     for regression_candidate in regression_test_candidates:
         server_url = credentials['server_url']
+
+        # Checking successful completion
+        status = wait_for_workflow_finish(task_id, wait_time, credentials)
+        if status != "DONE":
+            continue
+
+        # Testing regression
         if not test_view_counts(regression_candidate["old_task"], \
             regression_candidate["new_task"], 
             server_url, regression_candidate["view_name"]):
