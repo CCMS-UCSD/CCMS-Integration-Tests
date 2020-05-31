@@ -54,4 +54,14 @@ test-workflow-gnps-misc:
 	
 test-workflow-gnps-networking:
 	act -j workflow-gnps-networking-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
-	
+
+
+## Manual Workflow Test outside of Act
+
+test-manual-gnps-workflow:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv
