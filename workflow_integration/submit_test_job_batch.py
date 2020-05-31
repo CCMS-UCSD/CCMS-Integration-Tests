@@ -248,6 +248,7 @@ def main():
             print(task, output_failures_dict[task])
         exit(1)
     else:
+        print("All Tests Completed Successfully with no errors! Party on!")
         exit(0)
 
 if __name__ == "__main__":
