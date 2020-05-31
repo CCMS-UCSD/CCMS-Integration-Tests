@@ -6,13 +6,26 @@ test-push:
 test-schedule:
 	act schedule -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 
-# Individual targets
+#######################
+# Individual Targets
+#######################
+
+## API targets
 test-api:
 	act -j api-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 
-test-selenium:
-	act -j selenium-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -b -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 
+
+## Selenium targets
+test-selenium-result-proteomics:
+	act -j result-proteomics-selenium -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -b -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
+
+test-selenium-input-forms:
+	act -j input-forms-selenium -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -b -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
+
+
+
+## Workflow Targets
 test-workflow-beta-fbmn:
 	act -j workflow-beta-fbmn-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 	
@@ -103,7 +116,7 @@ test-manual-gnps-mergepolarity:
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
-	--credential_server gnps.ucsd.edu 
+	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv
 
 test-manual-gnps-misc:
@@ -111,5 +124,5 @@ test-manual-gnps-misc:
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
-	--credential_server gnps.ucsd.edu 
+	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv

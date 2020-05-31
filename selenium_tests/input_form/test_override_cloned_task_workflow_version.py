@@ -13,7 +13,7 @@ warnings.filterwarnings('ignore')
 
 class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
         self.driver.implicitly_wait(30)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.verificationErrors = []
