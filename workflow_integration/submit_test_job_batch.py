@@ -98,7 +98,10 @@ def main():
     parser.add_argument('--workflow_json', nargs="+", help="Set of json files to test")
     parser.add_argument('--workflow_task', nargs="+", help="Set of workflow tasks to test")
     parser.add_argument('--workflow_task_file', default=None, help="Set of workflow tasks to test")
+    parser.add_argument('--workflow_version', default=None, help="Forced version of workflow to test")
     args = parser.parse_args()
+
+    workflow_version = os.environ.get("WORKFLOW_VERSION", args.workflow_version)
 
     wait_time = args.wait_time
 
@@ -127,6 +130,9 @@ def main():
             param_object["desc"][0] = param_object["desc"][0] + " - " + " Clone of JSON {}".format(os.path.basename(path_to_json_file))
             param_object["email"][0] = "ccms.web@gmail.com"
 
+            if workflow_version is not None:
+                param_object["workflow_version"] = [workflow_version]
+
             task_id = invoke_workflow(credentials, param_object)
             if task_id == None:
                 exit(1)
@@ -144,6 +150,9 @@ def main():
 
             param_object["desc"][0] = param_object["desc"][0] + " - " + " Clone of {}".format(task_id)
             param_object["email"][0] = "ccms.web@gmail.com"
+
+            if workflow_version is not None:
+                param_object["workflow_version"] = [workflow_version]
 
             new_task_id = invoke_workflow(credentials, param_object)
             if new_task_id == None:
@@ -167,6 +176,9 @@ def main():
 
             param_object["desc"][0] = param_object["desc"][0] + " - " + " Clone of {}".format(task_id)
             param_object["email"][0] = "ccms.web@gmail.com"
+
+            if workflow_version is not None:
+                param_object["workflow_version"] = [workflow_version]
 
             new_task_id = invoke_workflow(credentials, param_object)
             if new_task_id == None:
