@@ -119,6 +119,14 @@ test-manual-gnps-mergepolarity:
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv
 
+test-manual-gnps-qemistree:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv
+
 test-manual-gnps-misc:
 	python workflow_integration/submit_test_job_batch.py \
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
