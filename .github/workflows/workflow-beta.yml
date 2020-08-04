@@ -48,6 +48,7 @@ jobs:
           python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
           --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
           --credential_server proteomics3.ucsd.edu \
+          --wait_time 15000 \
           --workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv
 
   workflow-beta-library-test:
