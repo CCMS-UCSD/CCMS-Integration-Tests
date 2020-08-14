@@ -87,6 +87,32 @@ jobs:
         cd selenium_tests/input_form && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
         cd selenium_tests/input_form && export SERVER_URL="https://proteomics2.ucsd.edu" && nose2 -v && cd ../..
         cd selenium_tests/input_form && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
+  
+  user-views-selenium:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install nose2
+        pip install selenium
+    - name: Test with nose2
+      env: # Or as an environment variable
+        CCMS_TESTUSER_USERNAME: ${{ secrets.CCMS_TESTUSER_USERNAME }}
+        CCMS_TESTUSER_PASSWORD: ${{ secrets.CCMS_TESTUSER_PASSWORD }}
+      run: |
+        # Input Forms
+        cd selenium_tests/user_views && export SERVER_URL="https://gnps.ucsd.edu" && nose2 -v && cd ../..
+        cd selenium_tests/user_views && export SERVER_URL="https://proteomics2.ucsd.edu" && nose2 -v && cd ../..
+        cd selenium_tests/user_views && export SERVER_URL="https://proteomics3.ucsd.edu" && nose2 -v && cd ../..
 
   gnps-specific-selenium:
     runs-on: ubuntu-latest
