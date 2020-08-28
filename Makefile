@@ -50,7 +50,8 @@ test-workflow-beta-gc:
 test-workflow-beta-mergepolarity:
 	act -j workflow-beta-mergepolarity-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 	
-
+test-workflow-beta-ms2lda:
+	act -j workflow-beta-ms2lda-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 
 
 test-workflow-gnps-fbmn:
