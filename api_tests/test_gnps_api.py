@@ -48,21 +48,23 @@ def test_datasets(server_url):
 
 @params("gnps.ucsd.edu")
 def test_dataset_api(server_url):
-    url = "    https://{}/ProteoSAFe/QueryDatasets?task=N%2FA&file=&pageSize=30&offset=0&query=%257B%2522query%2522%253A%257B%257D%252C%2522table_sort_history%2522%253A%2522createdMillis_dsc%2522%252C%2522title_input%2522%253A%2522GNPS%2522%257D&target=&_=1583795399976".format(server_url)
+    url = "https://{}/ProteoSAFe/QueryDatasets?task=N%2FA&file=&pageSize=30&offset=0&query=%257B%2522query%2522%253A%257B%257D%252C%2522table_sort_history%2522%253A%2522createdMillis_dsc%2522%252C%2522title_input%2522%253A%2522GNPS%2522%257D&target=&_=1583795399976".format(server_url)
     r = requests.get(url)
     r.raise_for_status()
 
 
 @params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
-def test_direct_network_download(server_url):
+def test_direct_download(server_url):
     test_urls = []
     test_urls.append("https://{}/ProteoSAFe/DownloadResultFile?task=3fdc6adc5c104652a78caf70d513c8c3&block=main&file=output_graphml/".format(server_url))
     test_urls.append("https://{}/ProteoSAFe/DownloadResultFile?task=047ef85223024f269e44492adc771d9c&block=main&file=gnps_molecular_network_graphml/".format(server_url))
+    test_urls.append("http://{}/ProteoSAFe/DownloadResultFile?task=ddd650381cef4bcfad4b068e9400c8d7&block=main&file=f.MSV000085444/ccms_peak/peak/Hui_N1_fe.mzML".format(server_url))
 
     for url in test_urls:
         print(url)
-        data = requests.get(url)
-        assert(len(data.text) > 50000)
+        r = requests.get(url)
+        assert(r.status_code == 200)
+        assert(len(r.text) > 50000)
 
 
 @params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
@@ -82,6 +84,7 @@ def test_download_result_zip(server_url):
         assert(len(listOfFileNames) >= 5)
 
     os.remove(zip_filename)
+
 
 @params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
 def test_gnps_library(server_url):
