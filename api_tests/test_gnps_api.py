@@ -59,7 +59,7 @@ def test_direct_download(server_url):
     test_urls.append("https://{}/ProteoSAFe/DownloadResultFile?task=3fdc6adc5c104652a78caf70d513c8c3&block=main&file=output_graphml/".format(server_url))
     test_urls.append("https://{}/ProteoSAFe/DownloadResultFile?task=047ef85223024f269e44492adc771d9c&block=main&file=gnps_molecular_network_graphml/".format(server_url))
     test_urls.append("http://{}/ProteoSAFe/DownloadResultFile?task=ddd650381cef4bcfad4b068e9400c8d7&block=main&file=f.MSV000085444/ccms_peak/peak/Hui_N1_fe.mzML".format(server_url))
-    test_urls.append("http://{}/ProteoSAFe/DownloadResultFile?task=3267429216024700a33befc9e6e33b10&block=main&file=f.mwang87/data/Metabolomics/Cheese/mzML/09.mzML".format(server_url))
+    test_urls.append("http://{}/ProteoSAFe/DownloadResultFile?task=ddd650381cef4bcfad4b068e9400c8d7&block=main&file=f.mwang87/data/Metabolomics/Cheese/mzML/09.mzML".format(server_url))
 
     for url in test_urls:
         print(url)
