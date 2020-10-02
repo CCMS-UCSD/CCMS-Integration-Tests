@@ -79,7 +79,7 @@ test-manual-gnps-networking:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/metabolomics-snets-v2/test-integration-workflow/test_tasks.csv \
-	--workflow_version release_25
+	--workflow_version release_26
 
 test-manual-gnps-fbmn:
 	python workflow_integration/submit_test_job_batch.py \
@@ -88,7 +88,7 @@ test-manual-gnps-fbmn:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv \
-	--workflow_version release_25
+	--workflow_version release_26
 
 test-manual-gnps-library:
 	python workflow_integration/submit_test_job_batch.py \
