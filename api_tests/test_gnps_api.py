@@ -60,13 +60,20 @@ def test_direct_download(server_url):
     test_urls.append("https://{}/ProteoSAFe/DownloadResultFile?task=047ef85223024f269e44492adc771d9c&block=main&file=gnps_molecular_network_graphml/".format(server_url))
     test_urls.append("http://{}/ProteoSAFe/DownloadResultFile?task=ddd650381cef4bcfad4b068e9400c8d7&block=main&file=f.MSV000085444/ccms_peak/peak/Hui_N1_fe.mzML".format(server_url))
     test_urls.append("http://{}/ProteoSAFe/DownloadResultFile?task=ddd650381cef4bcfad4b068e9400c8d7&block=main&file=f.mwang87/data/Metabolomics/Cheese/mzML/09.mzML".format(server_url))
+    
+    for url in test_urls:
+        print(url)
+        r = requests.get(url)
+        assert(r.status_code == 200)
+        assert(len(r.text) > 50000)
+
+    test_urls = []
     test_urls.append("https://{}/ProteoSAFe/DownloadResultFile?task=45c638496d9942e5a855fa051b63701d&file=written_description/0b04a5972a074141a442238ab3448049.html&block=main".format(server_url))
 
     for url in test_urls:
         print(url)
         r = requests.get(url)
         assert(r.status_code == 200)
-        assert(len(r.text) > 50000)
 
 
 @params("gnps.ucsd.edu", "proteomics3.ucsd.edu")
