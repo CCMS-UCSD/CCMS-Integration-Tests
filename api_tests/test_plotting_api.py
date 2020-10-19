@@ -2,18 +2,18 @@ import requests
 from nose2.tools import params
 import json
 
-def test_internal_plot_api():
-    url = "https://ccms-internal.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=8c2674bb0d40482fb813c83580fb0766&block=0&file=FILE-%3Ef.test%2Fdemo%2FLens%2Fspectra%2F93yo_sol_31_32.mgf&scan=-1&index=267&peptide=*..*&trim=true&force=true"
-    r = requests.get(url, verify=False)
-    r.raise_for_status()
+# def test_internal_plot_api():
+#     url = "https://ccms-internal.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=8c2674bb0d40482fb813c83580fb0766&block=0&file=FILE-%3Ef.test%2Fdemo%2FLens%2Fspectra%2F93yo_sol_31_32.mgf&scan=-1&index=267&peptide=*..*&trim=true&force=true"
+#     r = requests.get(url, verify=False)
+#     r.raise_for_status()
 
 
-def test_internal_plot_json():
-    # JSON for USI
-    url = "https://ccms-internal.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&format=JSON&file=FILE-%3EMSV000081515%2Fccms_peak%2Fblank1_pos_91_01_5418.mzML&nativeid=scan%3D115%2Cindex%3D115%2Cspectrum%3D115%2CscanId%3D115%2Cquery%3D115%2Cdatabasekey%3D115&peptide=*..*&uploadfile=True&task=4f2ac74ea114401787a7e96e143bb4a1"
-    r = requests.get(url, verify=False)
-    r.raise_for_status()
-    r.json()
+# def test_internal_plot_json():
+#     # JSON for USI
+#     url = "https://ccms-internal.ucsd.edu/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&block=0&format=JSON&file=FILE-%3EMSV000081515%2Fccms_peak%2Fblank1_pos_91_01_5418.mzML&nativeid=scan%3D115%2Cindex%3D115%2Cspectrum%3D115%2CscanId%3D115%2Cquery%3D115%2Cdatabasekey%3D115&peptide=*..*&uploadfile=True&task=4f2ac74ea114401787a7e96e143bb4a1"
+#     r = requests.get(url, verify=False)
+#     r.raise_for_status()
+#     r.json()
 
 
 
