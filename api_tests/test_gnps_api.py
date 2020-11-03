@@ -31,7 +31,7 @@ def test_datasets(server_url):
     assert(len(datasets_list) > 500)
 
     #testing to make sure the massive servlet works for all GNPS datasets
-    for dataset in datasets_list:
+    for dataset in datasets_list[:50]:
         if "GNPS" in dataset["title"].upper():
             task_id = dataset["task"]
 
