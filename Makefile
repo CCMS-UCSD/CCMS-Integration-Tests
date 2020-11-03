@@ -72,6 +72,15 @@ test-workflow-gnps-networking:
 
 ## Manual Workflow Test outside of Act
 
+test-manual-beta-fast:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file CCMSDeployments/fast_test_workflow/test-integration-workflow/test_tasks.tsv
+
+
 test-manual-gnps-networking:
 	python workflow_integration/submit_test_job_batch.py \
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
