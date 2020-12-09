@@ -72,14 +72,15 @@ test-workflow-gnps-networking:
 
 ## Manual Workflow Test outside of Act
 
-test-manual-beta-fast:
+test-manual-gnps-all: test-manual-gnps-fast test-manual-gnps-networking test-manual-gnps-fbmn test-manual-gnps-library test-manual-gnps-masst test-manual-gnps-gc test-manual-gnps-mergepolarity test-manual-gnps-qemistree test-manual-gnps-misc
+
+test-manual-gnps-fast:
 	python workflow_integration/submit_test_job_batch.py \
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
-	--credential_server proteomics3.ucsd.edu \
+	--credential_server gnps.ucsd.edu \
 	--workflow_task_file CCMSDeployments/fast_test_workflow/test-integration-workflow/test_tasks.tsv
-
 
 test-manual-gnps-networking:
 	python workflow_integration/submit_test_job_batch.py \
@@ -143,4 +144,82 @@ test-manual-gnps-misc:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
+
+
+# Beta
+
+test-manual-beta-all: test-manual-beta-fast test-manual-beta-networking test-manual-beta-fbmn test-manual-beta-library test-manual-beta-masst test-manual-beta-gc test-manual-beta-mergepolarity test-manual-beta-qemistree test-manual-beta-misc
+
+test-manual-beta-fast:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file CCMSDeployments/fast_test_workflow/test-integration-workflow/test_tasks.tsv
+
+
+test-manual-beta-networking:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/metabolomics-snets-v2/test-integration-workflow/test_tasks.csv \
+
+test-manual-beta-fbmn:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv \
+
+test-manual-beta-library:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/molecular-librarysearch-v2/test-integration-workflow/test_tasks.csv \
+
+test-manual-beta-masst:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv \
+
+test-manual-beta-gc:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/molecular-librarysearch-gc/test-integration-workflow/test_tasks.csv
+
+test-manual-beta-mergepolarity:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv
+
+test-manual-beta-qemistree:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv
+
+test-manual-beta-misc:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
