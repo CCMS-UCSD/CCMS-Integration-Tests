@@ -72,7 +72,7 @@ test-workflow-gnps-networking:
 
 ## Manual Workflow Test outside of Act
 
-test-manual-gnps-all: test-manual-gnps-fast test-manual-gnps-networking test-manual-gnps-fbmn test-manual-gnps-library test-manual-gnps-masst test-manual-gnps-gc test-manual-gnps-mergepolarity test-manual-gnps-qemistree test-manual-gnps-misc
+test-manual-gnps-all: test-manual-gnps-fast test-manual-gnps-networking test-manual-gnps-fbmn test-manual-gnps-library test-manual-gnps-masst test-manual-gnps-gc test-manual-gnps-gcmshub test-manual-gnps-mergepolarity test-manual-gnps-qemistree test-manual-gnps-misc
 
 test-manual-gnps-fast:
 	python workflow_integration/submit_test_job_batch.py \
@@ -113,6 +113,14 @@ test-manual-gnps-masst:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv \
+
+test-manual-gnps-gcmshub:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/mshub-gc/test-integration-workflow/test_tasks.csv
 
 test-manual-gnps-gc:
 	python workflow_integration/submit_test_job_batch.py \
