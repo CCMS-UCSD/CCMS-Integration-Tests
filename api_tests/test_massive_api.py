@@ -3,9 +3,14 @@ import requests
 
 def test_massive_apis():
     url = "https://massive.ucsd.edu/ProteoSAFe//proxi/v0.1/datasets?filter=MSV000084741&function=datasets"
-
-    r = requests.get(url)
+    r = requests.get(url, timeout=5)
     r.raise_for_status()
+
+def test_massive_usi_resolution():
+    url = "https://massive.ucsd.edu/ProteoSAFe/QuerySpectrum?id=mzspec:MSV000085852:QC_0:scan:1"
+    r = requests.get(url, timeout=5)
+    r.raise_for_status()
+
 
 
 def test_massive_webpage():
