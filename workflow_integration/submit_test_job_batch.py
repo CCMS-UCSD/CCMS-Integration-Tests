@@ -100,6 +100,7 @@ def main():
     parser.add_argument('--workflow_task', nargs="+", help="Set of workflow tasks to test")
     parser.add_argument('--workflow_task_file', default=None, help="Set of workflow tasks to test")
     parser.add_argument('--workflow_version', default=None, help="Forced version of workflow to test")
+    parser.add_argument('--remove_tasks', default="Yes", help="Removing tasks after testing if successful")
     args = parser.parse_args()
 
     workflow_version = os.environ.get("WORKFLOW_VERSION", args.workflow_version)
@@ -238,7 +239,8 @@ def main():
 
         status = wait_for_workflow_finish(task_id, wait_time, credentials)
         if status == "DONE":
-            delete_task(task_id, credentials)
+            if args.remove_tasks == "Yes":
+                delete_task(task_id, credentials)
         else:
             print("Task {} ended with status [{}]".format(task_id, status))
             output_failures_dict[task_id] = "Workflow Failure"

@@ -80,7 +80,8 @@ test-manual-gnps-fast:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
-	--workflow_task_file CCMSDeployments/fast_test_workflow/test-integration-workflow/test_tasks.tsv
+	--workflow_task_file CCMSDeployments/fast_test_workflow/test-integration-workflow/test_tasks.tsv \
+	--remove_tasks "No"
 
 test-manual-gnps-networking:
 	python workflow_integration/submit_test_job_batch.py \
@@ -89,6 +90,7 @@ test-manual-gnps-networking:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/metabolomics-snets-v2/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-fbmn:
 	python workflow_integration/submit_test_job_batch.py \
@@ -97,6 +99,7 @@ test-manual-gnps-fbmn:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/feature-based-molecular-networking/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-library:
 	python workflow_integration/submit_test_job_batch.py \
@@ -105,6 +108,7 @@ test-manual-gnps-library:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/molecular-librarysearch-v2/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-masst:
 	python workflow_integration/submit_test_job_batch.py \
@@ -113,6 +117,7 @@ test-manual-gnps-masst:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-gcmshub:
 	python workflow_integration/submit_test_job_batch.py \
@@ -120,7 +125,8 @@ test-manual-gnps-gcmshub:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
-	--workflow_task_file GNPS_Workflows/mshub-gc/test-integration-workflow/test_tasks.csv
+	--workflow_task_file GNPS_Workflows/mshub-gc/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-gc:
 	python workflow_integration/submit_test_job_batch.py \
@@ -128,7 +134,8 @@ test-manual-gnps-gc:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
-	--workflow_task_file GNPS_Workflows/molecular-librarysearch-gc/test-integration-workflow/test_tasks.csv
+	--workflow_task_file GNPS_Workflows/molecular-librarysearch-gc/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-mergepolarity:
 	python workflow_integration/submit_test_job_batch.py \
@@ -136,7 +143,8 @@ test-manual-gnps-mergepolarity:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
-	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv
+	--workflow_task_file GNPS_Workflows/merge_networks_polarity/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-qemistree:
 	python workflow_integration/submit_test_job_batch.py \
@@ -144,7 +152,8 @@ test-manual-gnps-qemistree:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
-	--workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv
+	--workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv \
+	--remove_tasks "No"
 
 test-manual-gnps-misc:
 	python workflow_integration/submit_test_job_batch.py \
@@ -152,7 +161,8 @@ test-manual-gnps-misc:
 	--credential_password ${CCMS_TESTUSER_PASSWORD} \
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
-	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
+	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv \
+	--remove_tasks "No"
 
 
 # Beta
