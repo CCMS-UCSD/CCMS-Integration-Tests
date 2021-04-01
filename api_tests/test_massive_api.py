@@ -64,3 +64,8 @@ def test_massive_usi():
     r.raise_for_status()
 
     assert("f.RMSV" in r.json()["row_data"][0]["file_descriptor"])
+
+def test_massive_task_usi_resolution():
+    url = "https://massive.ucsd.edu/ProteoSAFe/QuerySpectrum?id=mzspec:MassIVE:TASK-f4b86b150a164ee4a440b661e97a7193-spectra:scan:471429"
+    r = requests.get(url)
+    r.raise_for_status()
