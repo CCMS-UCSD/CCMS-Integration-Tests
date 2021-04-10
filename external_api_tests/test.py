@@ -15,7 +15,7 @@ def test_ms2lda():
     r.raise_for_status()
 
     server_url = 'http://ms2lda.org/motifdb/'
-    motifset_dict = requests.get(server_url+'list_motifsets/').json()
+    motifset_dict = requests.get(server_url+'list_motifsets/', timeout=900).json()
 
     db_list = []
     db_list.append(2)
@@ -26,10 +26,10 @@ def test_ms2lda():
     db_list.append(6)
 
     client = requests.session()
-    token_output = client.get(server_url + 'initialise_api/').json()
+    token_output = client.get(server_url + 'initialise_api/', timeout=900).json()
     token = token_output['token']
     data = {'csrfmiddlewaretoken':token}
     data['motifset_id_list'] = db_list
     data['filter'] = 'True'
 
-    output = client.post(server_url + 'get_motifset/',data = data).json()
+    output = client.post(server_url + 'get_motifset/',data = data, timeout=900).json()
