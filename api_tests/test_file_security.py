@@ -6,11 +6,11 @@ import requests
 # TODO: replace these with references to GitHub secrets
 TEST_CREDENTIALS = {}
 TEST_CREDENTIALS["regular"] = {}
-TEST_CREDENTIALS["regular"]["username"] = os.environ.get("TEST_USERNAME")
-TEST_CREDENTIALS["regular"]["password"] = os.environ.get("TEST_PASSWORD")
+TEST_CREDENTIALS["regular"]["username"] = os.environ.get("CCMS_TESTNORMALUSER_USERNAME")
+TEST_CREDENTIALS["regular"]["password"] = os.environ.get("CCMS_TESTNORMALUSER_PASSWORD")
 TEST_CREDENTIALS["admin"] = {}
-TEST_CREDENTIALS["admin"]["username"] = os.environ.get("ADMIN_USERNAME")
-TEST_CREDENTIALS["admin"]["password"] = os.environ.get("ADMIN_PASSWORD")
+TEST_CREDENTIALS["admin"]["username"] = os.environ.get("CCMS_ADMIN_USERNAME")
+TEST_CREDENTIALS["admin"]["password"] = os.environ.get("CCMS_ADMIN_PASSWORD")
 
 # test parameters
 TEST_HOST = "massive.ucsd.edu"
