@@ -28,7 +28,7 @@ class TestInterfaceready(unittest.TestCase):
         print(url)
         self.driver.get(url)
         
-        time.sleep(15)
+        time.sleep(30)
 
         for entry in self.driver.get_log('browser'):
             print(entry)
@@ -41,7 +41,7 @@ class TestInterfaceready(unittest.TestCase):
         print(url)
         self.driver.get(url)
         
-        time.sleep(15)
+        time.sleep(30)
         
         # Checking that this does exist
         elements = self.driver.find_element_by_id("main.AllFiles_input")
