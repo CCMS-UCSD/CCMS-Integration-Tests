@@ -28,7 +28,7 @@ class TestInterfaceready(unittest.TestCase):
         print(url)
         self.driver.get(url)
         
-        time.sleep(5)
+        time.sleep(15)
 
         for entry in self.driver.get_log('browser'):
             print(entry)
