@@ -54,9 +54,19 @@ class TestInterfaceready(unittest.TestCase):
 
     # This makes sure we don't autohide when sorting
     def test_server_sort_autohide(self):
-        self.driver.get("{}/ProteoSAFe/result.jsp?task=4236c43b0d3a476a8e7f72aa00707e4b&view=view_differential#%7B%22table_sort_history%22%3A%22_dyn_%23adj.pvalue_asc%22%7D&test=true".format(self.base_url))
+        url = "{}/ProteoSAFe/result.jsp?task=4236c43b0d3a476a8e7f72aa00707e4b&view=view_differential&test=true#%7B%22table_sort_history%22%3A%22_dyn_%23adj.pvalue_asc%22%7D".format(self.base_url)
+        print(url)
+        self.driver.get(url)
         
         time.sleep(5)
+        
+        # print test environment browser console messages, if any
+        console = self.driver.get_log("browser")
+        if console:
+            print("browser console:")
+            print("----------")
+            print(console)
+            print("----------")
         
         # Checking that this does exist
         elements = self.driver.find_element_by_id("view_differential__dyn_#adj.pvalue_asc")
