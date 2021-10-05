@@ -212,6 +212,14 @@ test-manual-beta-masst:
 	--credential_server proteomics3.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/search_single_spectrum/test-integration-workflow/test_tasks.csv \
 
+test-manual-beta-gcmshub:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/mshub-gc/test-integration-workflow/test_tasks.csv
+
 test-manual-beta-gc:
 	python workflow_integration/submit_test_job_batch.py \
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
@@ -251,3 +259,11 @@ test-manual-beta-libraryconversion:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server proteomics3.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/library_conversion/test-integration-workflow/test_tasks.tsv
+
+test-manual-beta-ms2lda:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/ms2lda_motifdb/test-integration-workflow/test_tasks.csv
