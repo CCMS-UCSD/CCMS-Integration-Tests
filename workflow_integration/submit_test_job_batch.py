@@ -173,6 +173,12 @@ def main():
         row_records = pd.read_csv(args.workflow_task_file, sep=",").to_dict(orient="records")
         for row in row_records:
             print(row)
+
+            if "enable" in row:
+                if row["enable"] < 0.1:
+                    print("Skipping Disabled Test")
+                    continue
+            
             task_id = row["task_id"]
             param_object = import_params_to_dict(credentials['server_url'], task_id)
             param_object = reformat_params(param_object)

@@ -157,6 +157,15 @@ test-manual-gnps-qemistree:
 	--workflow_task_file GNPS_Workflows/qemistree/test-integration-workflow/test_tasks.csv \
 	--remove_tasks "No"
 
+test-manual-gnps-libraryconversion:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/library_conversion/test-integration-workflow/test_tasks.tsv \
+	--remove_tasks "No"
+
 test-manual-gnps-misc:
 	python workflow_integration/submit_test_job_batch.py \
 	--credential_username ${CCMS_TESTUSER_USERNAME} \
@@ -164,6 +173,15 @@ test-manual-gnps-misc:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server gnps.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv \
+	--remove_tasks "No"
+
+test-manual-gnps-ms2lda:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server gnps.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/ms2lda_motifdb/test-integration-workflow/test_tasks.csv \
 	--remove_tasks "No"
 
 
