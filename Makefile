@@ -14,6 +14,8 @@ test-schedule:
 test-api:
 	act -j api-test -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -s CCMS_TESTUSER_USERNAME=${CCMS_TESTUSER_USERNAME} -s CCMS_TESTUSER_PASSWORD=${CCMS_TESTUSER_PASSWORD}
 
+test-manual-api:
+	cd api_tests && nose2 -v
 
 
 ## Selenium targets
@@ -241,3 +243,11 @@ test-manual-beta-misc:
 	--workflow_version ${WORKFLOW_VERSION} \
 	--credential_server proteomics3.ucsd.edu \
 	--workflow_task_file GNPS_Workflows/workflow-integration-misc-tests/test_tasks.csv
+
+test-manual-beta-libraryconversion:
+	python workflow_integration/submit_test_job_batch.py \
+	--credential_username ${CCMS_TESTUSER_USERNAME} \
+	--credential_password ${CCMS_TESTUSER_PASSWORD} \
+	--workflow_version ${WORKFLOW_VERSION} \
+	--credential_server proteomics3.ucsd.edu \
+	--workflow_task_file GNPS_Workflows/library_conversion/test-integration-workflow/test_tasks.tsv
