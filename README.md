@@ -40,6 +40,10 @@ The required column headers is:
 1. description - this is the description to be human readable
 1. regressioncountviews - this is the set of semicolon separated views that we will check for the total number of rows to be present
 
+optional columns
+
+1. enable - 1 for enabled, 0 for disabled, if nothing is provided its enabled by default
+
 An example can be found [here](https://github.com/CCMS-UCSD/CCMSDeployments/blob/master/fast_test_workflow/test-workflow/test_tasks.tsv). 
 
 Additionally, we have integrated this utility into github actions but can be called manually in this fashion:
