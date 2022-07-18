@@ -24,11 +24,6 @@ def test_internal_old_api(server_url):
     r = requests.get(url)
     r.raise_for_status()
 
-    # Testing PKLBIN
-    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.pklbin&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true".format(server_url)
-    r = requests.get(url)
-    r.raise_for_status()
-
     # Testing mzXML
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true".format(server_url)
     r = requests.get(url)
@@ -105,12 +100,6 @@ def test_json_api(server_url):
     r.raise_for_status()
     r.json()
 
-    # Testing PKLBIN
-    url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&file=FILE-%3Espectra%2Fspecs_ms.pklbin&scan=17&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&peptide=*..*&force=true&format=JSON".format(server_url)
-    print(url)
-    r = requests.get(url)
-    r.raise_for_status()
-    r.json()
 
     # Testing mzXML
     url = "https://{}/ProteoSAFe/DownloadResultFile?invoke=annotatedSpectrumImageText&task=1ad7bc366aef45ce81d2dfcca0a9a5e7&block=0&file=FILE-%3Espec%2Fspec-00001.mzXML&scan=171&peptide=*..*&force=true&format=JSON".format(server_url)
