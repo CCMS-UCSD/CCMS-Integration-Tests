@@ -16,7 +16,9 @@ warnings.filterwarnings('ignore')
 
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
+        profile = webdriver.FirefoxProfile()
+        profile.accept_untrusted_certs = True
+        self.driver = webdriver.Firefox(firefox_profile=profile)
         self.driver.implicitly_wait(15)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.vars = {}
