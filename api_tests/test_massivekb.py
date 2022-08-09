@@ -33,9 +33,9 @@ def get_status(search_task_object):
     return status
 
 def test_provenance():
-    #massive_kb_library_task = "6eaa852ad93a42b6bb028790abdd1031" #Primary Library
-    massive_kb_library_task = "a141baf98ceb4bb789985e083a05e789" #No synthetics
-    #massive_kb_library_task = "dc4108c1273241e4b92fb9bfcf7f924a" #Only synthetics
+    #massive_kb_library_task = "3cac03860ff7453a821332ab4cff20f4" #Primary Library
+    massive_kb_library_task = "e33a302ea7e94422bf2b122260d22cc6" #No synthetics
+    #massive_kb_library_task = "86798dfb8f194d708394b3dd6ed6124b" #Only synthetics
 
     all_search_kb_url = "https://massive.ucsd.edu/ProteoSAFe/result_json.jsp?task=%s&view=view_all_search_tasks" % (massive_kb_library_task)
     filename = requests.get(all_search_kb_url).json()["blockData"]["file"]
