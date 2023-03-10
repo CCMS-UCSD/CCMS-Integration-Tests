@@ -35,7 +35,7 @@ def test_generator():
     for test in test_list.keys():
         yield test_call, test
 
-def test_protein_explorer_apis():
+def test_protein_explorer_proteins():
     # proteins
     url = "https://massive.ucsd.edu/ProteoSAFe/ProteinLibraryServlet?task=protein_explorer_proteins&file=&pageSize=30&offset=0&query=%2523%257B%2522unroll%2522%253A%2522no%2522%252C%2522include_synthetics%2522%253A%2522yes%2522%252C%2522datasets%2522%253A%2522%2522%252C%2522accession_input%2522%253A%2522%2522%252C%2522peptides_input%2522%253Anull%257D&query_type=representative"
     response = requests.get(url, timeout=10)
@@ -54,6 +54,7 @@ def test_protein_explorer_apis():
     content["row_data"][0]["globalpsmsunique"]
     response.raise_for_status()
 
+def test_protein_explorer_annotations():
     # protein annotation
     url = "https://massive.ucsd.edu/ProteoSAFe/ProteinAnnotationServlet?protein_name=O00203"
     response = requests.get(url, timeout=10)
@@ -68,6 +69,7 @@ def test_protein_explorer_apis():
     content["annotations_rendered"]
     response.raise_for_status()
 
+def test_protein_explorer_libraries():
     # peptide libraries
     url = "https://massive.ucsd.edu/ProteoSAFe/PeptideLibraryServlet"
     response = requests.get(url, timeout=10)
@@ -81,6 +83,8 @@ def test_protein_explorer_apis():
     content[0]["active"]
     response.raise_for_status()
 
+
+def test_protein_explorer_map():
     # protein coverage map
     url = "https://massive.ucsd.edu/ProteoSAFe/ProteinCoverageServlet?query_type=Map&protein_name=O00203&libraries=1,2&query=%257B%2522overlaps%2522%253Afalse%252C%2522libraries%2522%253A%25221%252C2%2522%252C%2522protein_name%2522%253A%2522O00203%2522%257D"
     response = requests.get(url, timeout=10)
@@ -95,6 +99,7 @@ def test_protein_explorer_apis():
     content["row_data"][0]["end_aa"]
     response.raise_for_status()
 
+def test_protein_explorer_representatives():
     # representatives
     url = "https://massive.ucsd.edu/ProteoSAFe/ProteinCoverageServlet?task=protein_explorer_representatives&file=&pageSize=10&offset=0&query=%2523%257B%2522overlaps%2522%253Afalse%252C%2522libraries%2522%253A%25221%252C2%2522%252C%2522protein_name%2522%253A%2522O00203%2522%257D&query_type=representative&_=1677257072853"
     response = requests.get(url, timeout=10)
@@ -116,6 +121,7 @@ def test_protein_explorer_apis():
     content["row_data"][0]["endaa"]
     response.raise_for_status()
 
+def test_protein_explorer_provenance():
     # provenance
     url = "https://massive.ucsd.edu/ProteoSAFe/ProteinCoverageServlet?task=protein_explorer_provenance&file=&pageSize=10&offset=0&query=%2523%257B%2522overlaps%2522%253Afalse%252C%2522libraries%2522%253A%25221%252C2%2522%252C%2522protein_name%2522%253A%2522O00203%2522%257D&query_type=provenance&_=1677257072854"
     response = requests.get(url, timeout=10)
