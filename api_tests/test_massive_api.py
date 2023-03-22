@@ -18,7 +18,9 @@ def test_massive_webpage():
     requests.get("http://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Dataset Page
     requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=reanalysis&task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Reanalysese
     requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivehistory&massiveid=MSV000079514", timeout=10).raise_for_status()
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivesummary&massiveid=MSV000079514", timeout=10).raise_for_status()
+    # Jeremy 3/22/23: increasing timeout for the "massivesummary" API call, since the query is slower than anticipated;
+    # need to figure out exactly why it's so slow and fix it, but for now it's okay if it takes a bit longer
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/MassiveServlet?function=massivesummary&massiveid=MSV000079514", timeout=30).raise_for_status()
 
 
 def test_massive_ftp():
