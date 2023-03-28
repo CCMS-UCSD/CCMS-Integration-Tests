@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 import unittest, time, re
 
 import warnings
@@ -13,7 +14,9 @@ warnings.filterwarnings('ignore')
 
 class Proteomics2LoginLogout(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(30)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu/")
         print("Testing", self.base_url)
