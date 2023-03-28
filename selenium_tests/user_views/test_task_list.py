@@ -27,6 +27,7 @@ class TestTaskList(unittest.TestCase):
         driver = self.driver
         # log in as test user
         print("Logging in as test user.")
+        print("URL = {}/ProteoSAFe/user/login.jsp?test=true".format(self.base_url))
         driver.get("{}/ProteoSAFe/user/login.jsp?test=true".format(self.base_url))
         for i in range(60):
             try:
