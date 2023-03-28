@@ -32,20 +32,22 @@ class Proteomics2LoginLogout(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("user").send_keys("test")
-        driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys(os.environ.get("CCMS_TESTUSER_PASSWORD"))
-        driver.find_element_by_name("login").click()
+        username_field = driver.find_element(by=By.NAME, value="user")
+        username_field.clear()
+        username_field.send_keys("test")
+        password_field = driver.find_element(by=By.NAME, value="password")
+        password_field.clear()
+        password_field.send_keys(os.environ.get("CCMS_TESTUSER_PASSWORD"))
+        driver.find_element(by=By.NAME, value="login").click()
         for i in range(60):
             try:
-                if "Successful login" == driver.find_element_by_xpath("//h1").text: break
+                if "Successful login" == driver.find_element(by=By.XPATH, value="//h1").text: break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
         for i in range(60):
             try:
-                if "Logout" == driver.find_element_by_xpath("//a[@href=\"/ProteoSAFe/user/logout.jsp\"]").text: break
+                if "Logout" == driver.find_element(by=By.XPATH, value="//a[@href=\"/ProteoSAFe/user/logout.jsp\"]").text: break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -53,10 +55,10 @@ class Proteomics2LoginLogout(unittest.TestCase):
         # Logout is not working, exiting before we do it
         return 0
 
-        driver.find_element_by_link_text("Logout").click()
+        driver.find_element(by=By.LINK_TEXT, value="Logout").click()
         for i in range(60):
             try:
-                if "Successful logout" == driver.find_element_by_xpath("//h1").text: break
+                if "Successful logout" == driver.find_element(by=By.XPATH, value="//h1").text: break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
