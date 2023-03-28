@@ -18,7 +18,7 @@ class TestTaskList(unittest.TestCase):
         options.headless = True
         self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(30)
-        self.base_url = os.environ.get("SERVER_URL")
+        self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.verificationErrors = []
         self.accept_next_alert = True
 
