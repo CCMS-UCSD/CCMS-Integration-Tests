@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 import unittest, time, re
 import os
 
@@ -16,9 +17,9 @@ warnings.filterwarnings('ignore')
 
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
-        profile = webdriver.FirefoxProfile()
-        profile.accept_untrusted_certs = True
-        self.driver = webdriver.Firefox(firefox_profile=profile)
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(15)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.vars = {}
@@ -32,14 +33,14 @@ class TestInterfaceready(unittest.TestCase):
         
         time.sleep(15)
         
-        elements = self.driver.find_element_by_id("other_library_spectra.library_membership_input")
+        elements = self.driver.find_element(by=By.ID, value="other_library_spectra.library_membership_input")
 
     def test_library_page_table2(self):
         self.driver.get("{}/ProteoSAFe/gnpslibrary.jsp?library=GNPS-LIBRARY&test=true".format(self.base_url))
         
         time.sleep(15)
         
-        elements = self.driver.find_element_by_id("main.spectrum_id_input")
+        elements = self.driver.find_element(by=By.ID, value="main.spectrum_id_input")
 
         
 

@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 import unittest, time, re
 import os
 
@@ -13,7 +14,9 @@ warnings.filterwarnings('ignore')
 
 class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(30)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
         self.verificationErrors = []
@@ -30,14 +33,16 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("user").send_keys("test")
-        driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys(os.environ.get("CCMS_TESTUSER_PASSWORD"))
-        driver.find_element_by_name("login").click()
+        username_field = driver.find_element(by=By.NAME, value="user")
+        username_field.clear()
+        username_field.send_keys("test")
+        password_field = driver.find_element(by=By.NAME, value="password")
+        password_field.clear()
+        password_field.send_keys(os.environ.get("CCMS_TESTUSER_PASSWORD"))
+        driver.find_element(by=By.NAME, value="login").click()
         for i in range(60):
             try:
-                if "Successful login" == driver.find_element_by_xpath("//h1").text: break
+                if "Successful login" == driver.find_element(by=By.XPATH, value="//h1").text: break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -49,7 +54,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         time.sleep(2)
 
         # Assuming there is only one small tag in the page, this could be violated later
-        small_tags = driver.find_element_by_tag_name("small")
+        small_tags = driver.find_element(by=By.TAG_NAME, value="small")
         version_text = small_tags.text
         version = version_text.replace("Version ", "")
         self.assertEqual(version, "release_14")
@@ -62,7 +67,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         time.sleep(2)
 
         # Assuming there is only one small tag in the page, this could be violated later
-        small_tags = driver.find_element_by_tag_name("small")
+        small_tags = driver.find_element(by=By.TAG_NAME, value="small")
         version_text = small_tags.text
         version = version_text.replace("Version ", "")
         self.assertEqual(version, "release_17")
@@ -74,7 +79,7 @@ class OverrideClonedTaskWorkflowVersion(unittest.TestCase):
         time.sleep(2)
 
         # Assuming there is only one small tag in the page, this could be violated later
-        small_tags = driver.find_element_by_tag_name("small")
+        small_tags = driver.find_element(by=By.TAG_NAME, value="small")
         version_text = small_tags.text
         version = version_text.replace("Version ", "")
         self.assertNotEqual(version, "release_14")

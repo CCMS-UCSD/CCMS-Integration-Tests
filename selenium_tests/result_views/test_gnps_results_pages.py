@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import unittest, time, re
 
 import warnings
@@ -15,7 +16,9 @@ warnings.filterwarnings('ignore')
 
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(1)
         self.vars = {}
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
@@ -34,7 +37,7 @@ class TestInterfaceready(unittest.TestCase):
             print(entry)
         
         # Checking that this does exist
-        elements = self.driver.find_element_by_id("main.CLUSTERID1_lowerinput")
+        elements = self.driver.find_element(by=By.ID, value="main.CLUSTERID1_lowerinput")
 
     def test_gnps_networking(self):
         url = "{}/ProteoSAFe/result.jsp?task=92b9d140de144bb1afc0f0775858d453&view=view_raw_spectra&test=true".format(self.base_url)
@@ -44,10 +47,7 @@ class TestInterfaceready(unittest.TestCase):
         time.sleep(30)
         
         # Checking that this does exist
-        elements = self.driver.find_element_by_id("main.AllFiles_input")
-
-    
-
+        elements = self.driver.find_element(by=By.ID, value="main.AllFiles_input")
 
 if __name__ == "__main__":
     unittest.main()

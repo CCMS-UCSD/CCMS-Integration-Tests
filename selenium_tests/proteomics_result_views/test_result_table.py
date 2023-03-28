@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 import unittest, time, re
 import os
 
@@ -16,7 +17,9 @@ warnings.filterwarnings('ignore')
 
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(1)
         self.base_url = os.environ.get("SERVER_URL", "https://proteomics3.ucsd.edu")
         self.vars = {}
@@ -32,12 +35,12 @@ class TestInterfaceready(unittest.TestCase):
         
         time.sleep(5)
 
-        # Postiive control, making sure this does exist
-        elements = self.driver.find_element_by_id("main.Found_PSMs_lowerinput")
+        # Positive control, making sure this does exist
+        elements = self.driver.find_element(by=By.ID, value="main.Found_PSMs_lowerinput")
         
-        # Checking that this doesnt exists
+        # Checking that this doesn't exist
         with self.assertRaises(NoSuchElementException):
-            elements = self.driver.find_element_by_id("main.Invalid_PSM_rows_lowerinput")
+            elements = self.driver.find_element(by=By.ID, value="main.Invalid_PSM_rows_lowerinput")
 
 
     # This makes sure on server side tables, the autohiding works
@@ -50,7 +53,7 @@ class TestInterfaceready(unittest.TestCase):
         
         # Checking that this doesnt exist
         with self.assertRaises(NoSuchElementException):
-            elements = self.driver.find_element_by_id("main_search_engine_input")
+            elements = self.driver.find_element(by=By.ID, value="main_search_engine_input")
 
     # This makes sure we don't autohide when sorting
     def test_server_sort_autohide(self):
@@ -69,7 +72,7 @@ class TestInterfaceready(unittest.TestCase):
             print("----------")
         
         # Checking that this does exist
-        elements = self.driver.find_element_by_id("view_differential__dyn_#adj.pvalue_asc")
+        elements = self.driver.find_element(by=By.ID, value="view_differential__dyn_#adj.pvalue_asc")
 
 if __name__ == "__main__":
     unittest.main()
