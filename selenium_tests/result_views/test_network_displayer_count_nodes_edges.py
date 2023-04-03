@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import unittest, time, re
 
 import warnings
@@ -15,7 +16,9 @@ warnings.filterwarnings('ignore')
 
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true'])
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(30)
         self.vars = {}
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")
@@ -38,7 +41,6 @@ class TestInterfaceready(unittest.TestCase):
         assert len(nodes) == 0
         edges = self.driver.execute_script("return pairs_data;")
         assert len(edges) == 0
-
 
 if __name__ == "__main__":
     unittest.main()
