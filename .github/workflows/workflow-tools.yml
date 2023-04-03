@@ -2,7 +2,11 @@ name: workflow-tools
 
 on:
   pull_request:
-    types: [unlocked]
+    branches:
+      master
+  push:
+    branches:
+      master
   schedule:
     - cron:  '1 12 * * *'
 
