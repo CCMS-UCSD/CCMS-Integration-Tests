@@ -27,27 +27,27 @@ def test_massive_ftp():
     import urllib.request
 
 
-    url = "ftp://massive.ucsd.edu/MSV000080469"
+    url = "ftp://massive.ucsd.edu/v01/MSV000080469"
     print(url)
     urllib.request.urlopen(url)
 
-    url = "ftp://massive.ucsd.edu/MSV000079146"
+    url = "ftp://massive.ucsd.edu/v01/MSV000079146"
     print(url)
     urllib.request.urlopen(url)
 
-    url = "ftp://massive.ucsd.edu/MSV000079339"
+    url = "ftp://massive.ucsd.edu/v01/MSV000079339"
     print(url)
     urllib.request.urlopen(url)
 
-    url = "ftp://massive.ucsd.edu/MSV000079341"
+    url = "ftp://massive.ucsd.edu/v01/MSV000079341"
     print(url)
     urllib.request.urlopen(url)
 
-    url = "ftp://massive.ucsd.edu/MSV000079344"
+    url = "ftp://massive.ucsd.edu/v01/MSV000079344"
     print(url)
     urllib.request.urlopen(url)
 
-    url = "ftp://massive.ucsd.edu/MSV000080469/peak/AMG_mzXML/10317.000006947.mzXML"
+    url = "ftp://massive.ucsd.edu/v01/MSV000080469/peak/AMG_mzXML/10317.000006947.mzXML"
     print(url)
     urllib.request.urlopen(url)
     
