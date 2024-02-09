@@ -33,7 +33,7 @@ class TestTaskList(unittest.TestCase):
         for i in range(60):
             try:
                 username_field = driver.find_element(by=By.NAME, value="user")
-                if self.is_element_present(By.NAME, "user"): break
+                break
             except NoSuchElementException:
                 pass
             time.sleep(1)
