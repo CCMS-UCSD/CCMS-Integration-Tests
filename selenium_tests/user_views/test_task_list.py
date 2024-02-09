@@ -29,13 +29,15 @@ class TestTaskList(unittest.TestCase):
         print("Logging in as test user.")
         print("URL = {}/ProteoSAFe/user/login.jsp?test=true".format(self.base_url))
         driver.get("{}/ProteoSAFe/user/login.jsp?test=true".format(self.base_url))
+        username_field = None
         for i in range(60):
             try:
+                username_field = driver.find_element(by=By.NAME, value="user")
                 if self.is_element_present(By.NAME, "user"): break
-            except: pass
+            except NoSuchElementException:
+                pass
             time.sleep(1)
         else: self.fail("time out")
-        username_field = driver.find_element(by=By.NAME, value="user")
         username_field.clear()
         username_field.send_keys("test")
         password_field = driver.find_element(by=By.NAME, value="password")
