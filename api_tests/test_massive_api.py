@@ -9,7 +9,7 @@ if CONFIG_FILE is not None:
     CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, CONFIG_FILE)
     print("Using specified configuration file [" + CONFIG_FILE + "]")
 else:
-    CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "massive.cfg")
+    CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "production.cfg")
     print("Configuration file not specified - using default configuration file [" + CONFIG_FILE + "]")
 TARGET_WEB_SERVERS = []
 TARGET_FTP_SERVERS = []

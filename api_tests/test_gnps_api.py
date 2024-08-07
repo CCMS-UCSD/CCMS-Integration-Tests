@@ -11,7 +11,7 @@ if CONFIG_FILE is not None:
     CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, CONFIG_FILE)
     print("Using specified configuration file [" + CONFIG_FILE + "]")
 else:
-    CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "gnps.cfg")
+    CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "production.cfg")
     print("Configuration file not specified - using default configuration file [" + CONFIG_FILE + "]")
 TARGET_WEB_SERVERS = []
 TARGET_FTP_SERVERS = []
@@ -48,7 +48,7 @@ def test_continuous_id():
         jobs = continuous_id_object["jobs"]
         assert(len(jobs) > 10)
         #Testing a specific continuous ID
-        url = "https://" + target + "/ProteoSAFe/result_json.jsp?task=e00e4bc53e8240389deaa68596ca8eaa&view=group_by_spectrum_all_beta"
+        url = "https://gnps.ucsd.edu/ProteoSAFe/result_json.jsp?task=e00e4bc53e8240389deaa68596ca8eaa&view=group_by_spectrum_all_beta"
         data = requests.get(url)
         all_identifications_list = json.loads(data.text)["blockData"]
         assert(len(all_identifications_list) > 50)
