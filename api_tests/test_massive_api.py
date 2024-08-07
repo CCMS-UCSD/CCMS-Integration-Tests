@@ -1,8 +1,24 @@
 import os
 import requests
 
+# set up test via configuration file
+SCRIPT_DIRECTORY = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+CONFIG_DIRECTORY = os.path.join(os.path.dirname(SCRIPT_DIRECTORY), "config")
 CONFIG_FILE = os.getenv("TEST_CONFIG_FILE")
-print("config file = [" + str(CONFIG_FILE) + "]")
+if CONFIG_FILE is not None:
+    CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, CONFIG_FILE)
+else:
+    CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "massive.cfg")
+    print("Configuration file not specified - using default configuration file [" + CONFIG_FILE + "]")
+TEST_TARGETS = []
+if os.path.isfile(CONFIG_FILE):
+    with open(CONFIG_FILE, "r") as file_reader:
+        for line in file_reader:
+            TEST_TARGETS.append(line.strip())
+    print("Using test targets from configuration file [" + CONFIG_FILE + "]: [" + ", ".join(TEST_TARGETS) + "]")
+elif :
+    print("Configuration file [" + CONFIG_FILE + "] is not present - using default test target \"massive.ucsd.edu\"")
+    TEST_TARGETS.append("massive.ucsd.edu")
 
 def test_massive_apis():
     url = "https://massive.ucsd.edu/ProteoSAFe//proxi/v0.1/datasets?filter=MSV000084741&function=datasets"
@@ -13,8 +29,6 @@ def test_massive_usi_resolution():
     url = "https://massive.ucsd.edu/ProteoSAFe/QuerySpectrum?id=mzspec:MSV000085852:QC_0:scan:1"
     r = requests.get(url, timeout=5)
     r.raise_for_status()
-
-
 
 def test_massive_webpage():
     requests.get("http://massive.ucsd.edu/ProteoSAFe/datasets.jsp", timeout=10).raise_for_status() #Datasets Page
