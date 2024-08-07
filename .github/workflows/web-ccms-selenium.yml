@@ -9,6 +9,7 @@ on:
       - master
   schedule:
    - cron:  '*/60 * * * *'
+  workflow_dispatch:
 
 jobs:
   result-proteomics-selenium:
