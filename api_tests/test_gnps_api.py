@@ -9,10 +9,10 @@ CONFIG_DIRECTORY = os.path.join(os.path.dirname(SCRIPT_DIRECTORY), "config")
 CONFIG_FILE = os.getenv("TEST_CONFIG_FILE")
 if CONFIG_FILE is not None:
     CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, CONFIG_FILE)
-    print("Using specified configuration file [" + CONFIG_FILE + "]")
+    print("test_gnps_api: using specified configuration file [" + CONFIG_FILE + "]")
 else:
     CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "production.cfg")
-    print("Configuration file not specified - using default configuration file [" + CONFIG_FILE + "]")
+    print("test_gnps_api: configuration file not specified - using default configuration file [" + CONFIG_FILE + "]")
 TARGET_WEB_SERVERS = []
 TARGET_FTP_SERVERS = []
 if os.path.isfile(CONFIG_FILE):
@@ -34,9 +34,9 @@ if os.path.isfile(CONFIG_FILE):
                     TARGET_WEB_SERVERS.append(line)
                 elif mode == "ftp":
                     TARGET_FTP_SERVERS.append(line)
-    print("Using test targets from configuration file: web [" + ", ".join(TARGET_WEB_SERVERS) + "] / FTP [" + ", ".join(TARGET_FTP_SERVERS) + "]")
+    print("test_gnps_api: using test targets from configuration file: web [" + ", ".join(TARGET_WEB_SERVERS) + "] / FTP [" + ", ".join(TARGET_FTP_SERVERS) + "]")
 else:
-    print("Configuration file [" + CONFIG_FILE + "] is not present - using default test targets: web [gnps.ucsd.edu] / FTP [ccms-ftp.ucsd.edu]")
+    print("test_gnps_api: configuration file [" + CONFIG_FILE + "] is not present - using default test targets: web [gnps.ucsd.edu] / FTP [ccms-ftp.ucsd.edu]")
     TARGET_WEB_SERVERS.append("gnps.ucsd.edu")
     TARGET_FTP_SERVERS.append("ccms-ftp.ucsd.edu")
 
