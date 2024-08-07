@@ -1,5 +1,8 @@
+import os
 import requests
 
+CONFIG_FILE = os.getenv("TEST_CONFIG_FILE")
+print("config file = [" + str(CONFIG_FILE) + "]")
 
 def test_massive_apis():
     url = "https://massive.ucsd.edu/ProteoSAFe//proxi/v0.1/datasets?filter=MSV000084741&function=datasets"
