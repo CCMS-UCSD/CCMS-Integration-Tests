@@ -1,7 +1,7 @@
 import os
 import requests
 
-# set up test via configuration file
+# set up tests via configuration file
 SCRIPT_DIRECTORY = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 CONFIG_DIRECTORY = os.path.join(os.path.dirname(SCRIPT_DIRECTORY), "config")
 CONFIG_FILE = os.getenv("TEST_CONFIG_FILE")
@@ -11,30 +11,47 @@ if CONFIG_FILE is not None:
 else:
     CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, "massive.cfg")
     print("Configuration file not specified - using default configuration file [" + CONFIG_FILE + "]")
-TEST_TARGETS = []
+TARGET_WEB_SERVERS = []
+TARGET_FTP_SERVERS = []
 if os.path.isfile(CONFIG_FILE):
     with open(CONFIG_FILE, "r") as file_reader:
+        mode = None
         for line in file_reader:
-            TEST_TARGETS.append(line.strip())
-    print("Using test targets from configuration file: [" + ", ".join(TEST_TARGETS) + "]")
+            line = line.strip()
+            # handle config file sections properly
+            normalized_line = line.lower()
+            if normalized_line == "[web]":
+                mode = "web"
+            elif normalized_line == "[ftp]":
+                mode = "ftp"
+            # unrecognized section for this test suite
+            elif line.startswith("["):
+                mode = None
+            elif mode is not None:
+                if mode == "web":
+                    TARGET_WEB_SERVERS.append(line)
+                elif mode == "ftp":
+                    TARGET_FTP_SERVERS.append(line)
+    print("Using test targets from configuration file: web [" + ", ".join(TARGET_WEB_SERVERS) + "] / FTP [" + ", ".join(TARGET_FTP_SERVERS) + "]")
 else:
-    print("Configuration file [" + CONFIG_FILE + "] is not present - using default test target \"massive.ucsd.edu\"")
-    TEST_TARGETS.append("massive.ucsd.edu")
+    print("Configuration file [" + CONFIG_FILE + "] is not present - using default test targets: web [massive.ucsd.edu] / FTP [massive.ucsd.edu]")
+    TARGET_WEB_SERVERS.append("massive.ucsd.edu")
+    TARGET_FTP_SERVERS.append("massive.ucsd.edu")
 
 def test_massive_apis():
-    for target in TEST_TARGETS:
+    for target in TARGET_WEB_SERVERS:
         url = "https://" + target + "/ProteoSAFe/proxi/v0.1/datasets?filter=MSV000084741&function=datasets"
         r = requests.get(url, timeout=5)
         r.raise_for_status()
 
 def test_massive_usi_resolution():
-    for target in TEST_TARGETS:
+    for target in TARGET_WEB_SERVERS:
         url = "https://" + target + "/ProteoSAFe/QuerySpectrum?id=mzspec:MSV000085852:QC_0:scan:1"
         r = requests.get(url, timeout=5)
         r.raise_for_status()
 
 def test_massive_webpage():
-    for target in TEST_TARGETS:
+    for target in TARGET_WEB_SERVERS:
         requests.get("http://" + target + "/ProteoSAFe/datasets.jsp", timeout=10).raise_for_status() #Datasets Page
         requests.get("http://" + target + "/ProteoSAFe/dataset.jsp?task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Dataset Page
         requests.get("http://" + target + "/ProteoSAFe/MassiveServlet?function=reanalysis&task=fd246a746e0749c5ad0403be265bb2ea", timeout=10).raise_for_status() #Reanalysese
@@ -45,7 +62,7 @@ def test_massive_webpage():
 
 def test_massive_ftp():
     import urllib.request
-    for target in TEST_TARGETS:
+    for target in TARGET_FTP_SERVERS:
         url = "ftp://" + target + "/v01/MSV000080469"
         print(url)
         urllib.request.urlopen(url)
@@ -66,7 +83,7 @@ def test_massive_ftp():
         urllib.request.urlopen(url)
 
 def msstats_annotation_servlet():
-    for target in TEST_TARGETS:
+    for target in TARGET_WEB_SERVERS:
         url = "https://" + target + "/ProteoSAFe/MSStatsAnnotationServlet?filepath=f.benpullman%2FMSV000080025_mplex_calu3_MERS_CoV_response.csv%3B&header=Condition"
         r = requests.get(url)
         r.raise_for_status()
@@ -75,14 +92,14 @@ def msstats_annotation_servlet():
         assert(r.status_code == 400)
 
 def test_massive_usi():
-    for target in TEST_TARGETS:
+    for target in TARGET_WEB_SERVERS:
         url = "https://" + target + "/ProteoSAFe/QuerySpectrum?id=mzspec%3ARMSV000000308.2%3Apeak%2Fspecs_ms.mgf%3Aindex%3A262144%3A%5B229.162932%5D-EMEAELEDERK%5B229.163%5D&_=1588805688884"
         r = requests.get(url)
         r.raise_for_status()
         assert("f.RMSV" in r.json()["row_data"][0]["file_descriptor"])
 
 def test_massive_task_usi_resolution():
-    for target in TEST_TARGETS:
+    for target in TARGET_WEB_SERVERS:
         url = "https://" + target + "/ProteoSAFe/QuerySpectrum?id=mzspec:MassIVE:TASK-f4b86b150a164ee4a440b661e97a7193-spectra:scan:471429"
         r = requests.get(url)
         r.raise_for_status()
