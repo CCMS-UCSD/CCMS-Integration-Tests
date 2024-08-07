@@ -22,9 +22,9 @@ if os.path.isfile(CONFIG_FILE):
             line = line.strip()
             # handle config file sections properly
             normalized_line = line.lower()
-            if normalized_line == "[web]":
+            if normalized_line == "[web:gnps]":
                 mode = "web"
-            elif normalized_line == "[ftp]":
+            elif normalized_line == "[ftp:gnps]":
                 mode = "ftp"
             # unrecognized section for this test suite
             elif line.startswith("["):
