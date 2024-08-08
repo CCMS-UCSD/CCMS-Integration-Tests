@@ -28,9 +28,9 @@ if os.path.isfile(CONFIG_FILE):
             elif line.startswith("["):
                 mode = None
             elif mode is not None:
-                if mode == "web":
+                if mode == "web" and line not in TARGET_WEB_SERVERS:
                     TARGET_WEB_SERVERS.append(line)
-                elif mode == "ftp":
+                elif mode == "ftp" and line not in TARGET_FTP_SERVERS:
                     TARGET_FTP_SERVERS.append(line)
     print("test_massive_api: using test targets from configuration file: web [" + ", ".join(TARGET_WEB_SERVERS) + "] / FTP [" + ", ".join(TARGET_FTP_SERVERS) + "]")
 else:

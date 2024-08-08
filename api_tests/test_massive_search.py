@@ -24,7 +24,7 @@ if os.path.isfile(CONFIG_FILE):
             # unrecognized section for this test suite
             elif line.startswith("["):
                 mode = None
-            elif mode is not None and mode == "web":
+            elif mode is not None and mode == "web" and line not in TARGET_WEB_SERVERS:
                 TARGET_WEB_SERVERS.append(line)
     print("test_massive_search: using test targets from configuration file: web [" + ", ".join(TARGET_WEB_SERVERS) + "]")
 else:
