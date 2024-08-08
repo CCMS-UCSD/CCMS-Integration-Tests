@@ -7,7 +7,7 @@ import os
 SCRIPT_DIRECTORY = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 CONFIG_DIRECTORY = os.path.join(os.path.dirname(SCRIPT_DIRECTORY), "config")
 CONFIG_FILE = os.getenv("TEST_CONFIG_FILE")
-if CONFIG_FILE is not None:
+if CONFIG_FILE is not None and CONFIG_FILE.strip() != "":
     CONFIG_FILE = os.path.join(CONFIG_DIRECTORY, CONFIG_FILE)
     print("test_gnps_api: using specified configuration file [" + CONFIG_FILE + "]")
 else:
