@@ -1,3 +1,4 @@
+import os
 import requests
 
 # set up tests via configuration file
