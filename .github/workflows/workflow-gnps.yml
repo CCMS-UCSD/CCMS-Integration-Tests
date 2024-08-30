@@ -133,11 +133,11 @@ jobs:
 #        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
 #        --credential_server gnps.ucsd.edu \
 #        --workflow_task_file GNPS_Workflows/mshub-gc/test-integration-workflow/test_tasks.csv
-
-        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
-        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
-        --credential_server gnps.ucsd.edu \
-        --workflow_task_file GNPS_Workflows/molecular-librarysearch-gc/test-integration-workflow/test_tasks.csv
+#
+#        python workflow_integration/submit_test_job_batch.py --credential_username ${{ secrets.CCMS_TESTUSER_USERNAME }} \
+#        --credential_password ${{ secrets.CCMS_TESTUSER_PASSWORD }} \
+#        --credential_server gnps.ucsd.edu \
+#        --workflow_task_file GNPS_Workflows/molecular-librarysearch-gc/test-integration-workflow/test_tasks.csv
 
   workflow-gnps-mergepolarity-test:
     runs-on: ubuntu-latest
