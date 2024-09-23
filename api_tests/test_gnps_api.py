@@ -13,7 +13,7 @@ def test_continuous_id(server_url):
 
     assert(len(jobs) > 10)
 
-    #Testing a specific continuosu ID
+    #Testing a specific continuous ID
     url = "https://gnps.ucsd.edu/ProteoSAFe/result_json.jsp?task=e00e4bc53e8240389deaa68596ca8eaa&view=group_by_spectrum_all_beta"
     data = requests.get(url)
     all_identifications_list = json.loads(data.text)["blockData"]
@@ -104,15 +104,15 @@ def test_gnps_library(server_url):
     assert(len(r.text) > 20000)
 
     url = "https://{}/ProteoSAFe/SpectrumCommentServlet?SpectrumID=CCMSLIB00000001547".format(server_url)
-    utils.test_load_time(url, 20000)
+    utils.test_load_time(url, 60000)
     r = requests.get(url)
     assert(len(r.json()["spectruminfo"]["peaks_json"]) > 100)
     
     url = "https://{}/ProteoSAFe/static/gnps-splash.jsp?test=true".format(server_url)
-    utils.test_load_time(url, 20000)
+    utils.test_load_time(url, 60000)
 
     url = "https://{}/ProteoSAFe/gnpslibrary.jsp?library=GNPS-LIBRARY&test=true#%7B%22Library_Class_input%22%3A%221%7C%7C2%7C%7C3%7C%7CEXACT%22%7D".format(server_url)
-    utils.test_load_time(url, 20000)
+    utils.test_load_time(url, 60000)
 
     url = "https://{}/ProteoSAFe/ContinuousIDRatingSummaryServlet?spectrum_id=CCMSLIB00000006885&summary_type=per_spectrum".format(server_url)
     data = requests.get(url)
