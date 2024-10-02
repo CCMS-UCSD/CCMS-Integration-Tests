@@ -12,6 +12,8 @@ jobs:
     env:
       TRIGGERING_WORKFLOW_NAME:  ${{ github.event.workflow_run.name }}
       TRIGGERING_WORKFLOW_ID:  ${{ github.event.workflow_run.id }}
+      NOTIFICATION_EMAIL: ${{ secrets.CCMS_NOTIFICATION_EMAIL }}
+      NOTIFICATION_PASSWORD: ${{ secrets.CCMS_NOTIFICATION_PASSWORD }}
     steps:
     - uses: actions/checkout@v1
       with:
