@@ -6,7 +6,7 @@ import os
 import smtplib
 
 # script constants
-TRIGGERING_WORKFLOW_NAME = os.getenv("TRIGGERING_WORKFLOW_ID")
+TRIGGERING_WORKFLOW_NAME = os.getenv("TRIGGERING_WORKFLOW_NAME")
 TRIGGERING_WORKFLOW_ID = os.getenv("TRIGGERING_WORKFLOW_ID")
 NOTIFICATION_EMAIL = os.getenv("NOTIFICATION_EMAIL")
 NOTIFICATION_PASSWORD = os.getenv("NOTIFICATION_PASSWORD")
@@ -18,7 +18,7 @@ def test_notify_on_workflow_failure():
     subject = "[CCMS] GitHub CCMS-Integration-Tests Workflow Failure: " + TRIGGERING_WORKFLOW_NAME + " (" + TRIGGERING_WORKFLOW_ID + ")"
     now = datetime.datetime.now().strftime(TIMESTAMP_FORMAT)
     test_link = GITHUB_TEST_URL_BASE + TRIGGERING_WORKFLOW_ID
-    email_body = """
+    email_body = f"""
 <h3>{subject}, {now}:</h3>
 
 Test workflow {TRIGGERING_WORKFLOW_NAME} (ID {TRIGGERING_WORKFLOW_ID}) failed: {test_link} 
