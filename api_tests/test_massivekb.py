@@ -57,13 +57,13 @@ def test_provenance():
 
 def test_massive_kb():
     #Datasets Page
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/static/massive-kb-libraries.jsp", timeout=10).raise_for_status()
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/static/massive-kb-libraries.jsp", timeout=60).raise_for_status()
 
     #all library variants
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/result.jsp?task=e1d143d146fc4045aea48e2a7044e4d9&view=ambiguity_library_view_split", timeout=10).raise_for_status()
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/result.jsp?task=e1d143d146fc4045aea48e2a7044e4d9&view=ambiguity_library_view_split", timeout=60).raise_for_status()
 
     #search provenance
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/result.jsp?task=e1d143d146fc4045aea48e2a7044e4d9&view=view_all_search_tasks", timeout=10).raise_for_status()
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/result.jsp?task=e1d143d146fc4045aea48e2a7044e4d9&view=view_all_search_tasks", timeout=60).raise_for_status()
 
     #Proteins
-    requests.get("http://massive.ucsd.edu/ProteoSAFe/result.jsp?task=e1d143d146fc4045aea48e2a7044e4d9&view=protein_list", timeout=10).raise_for_status()
+    requests.get("http://massive.ucsd.edu/ProteoSAFe/result.jsp?task=e1d143d146fc4045aea48e2a7044e4d9&view=protein_list", timeout=60).raise_for_status()
