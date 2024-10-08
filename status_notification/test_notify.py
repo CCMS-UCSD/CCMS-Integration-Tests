@@ -3,6 +3,7 @@
 import datetime
 import email
 import os
+import pytz
 import smtplib
 
 # script constants
@@ -16,7 +17,7 @@ GITHUB_TEST_URL_BASE = "https://github.com/CCMS-UCSD/CCMS-Integration-Tests/acti
 
 def test_notify_on_workflow_failure():
     subject = "GitHub CCMS-Integration-Tests Workflow Failure: " + TRIGGERING_WORKFLOW_NAME
-    now = datetime.datetime.now().strftime(TIMESTAMP_FORMAT)
+    now = datetime.datetime.now(pytz.timezone("US/Pacific")).strftime(TIMESTAMP_FORMAT)
     test_link = GITHUB_TEST_URL_BASE + TRIGGERING_WORKFLOW_ID
     email_body = f"""
 <h3>{subject}, {now}:</h3>
