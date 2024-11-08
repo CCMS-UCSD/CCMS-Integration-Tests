@@ -2,7 +2,7 @@ name: status-notification
 
 on:
   workflow_run:
-    workflows: [web-ccms-api, web-ccms-selenium, web-external-api, workflow-beta, workflow-gnps, workflow-gnps-fast, workflow-proteomics3-fast]
+    workflows: [web-ccms-api, web-ccms-selenium, workflow-beta, workflow-gnps, workflow-gnps-fast, workflow-proteomics3-fast]
     types: [completed]
 
 jobs:
