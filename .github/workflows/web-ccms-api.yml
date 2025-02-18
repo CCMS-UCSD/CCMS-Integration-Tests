@@ -10,10 +10,18 @@ on:
   schedule:
    - cron:  '*/60 * * * *'
   workflow_dispatch:
+    inputs:
+      config_file:
+        description: 'Test configuration file'
+        type: string
+        required: false
 
 jobs:
   api-test:
     runs-on: ubuntu-latest
+    env:
+      TEST_CONFIG_FILE:
+        ${{ inputs.config_file }}
     steps:
     - uses: actions/checkout@v1
       with:
