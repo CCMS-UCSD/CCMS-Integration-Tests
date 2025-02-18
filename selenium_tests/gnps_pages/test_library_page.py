@@ -18,7 +18,7 @@ warnings.filterwarnings('ignore')
 class TestInterfaceready(unittest.TestCase):
     def setUp(self):
         options = Options()
-        options.headless = True
+        options.add_argument("--headless")
         self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(15)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu")

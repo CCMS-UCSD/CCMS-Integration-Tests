@@ -15,7 +15,7 @@ warnings.filterwarnings('ignore')
 class Proteomics2LoginLogout(unittest.TestCase):
     def setUp(self):
         options = Options()
-        options.headless = True
+        options.add_argument("--headless")
         self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(30)
         self.base_url = os.environ.get("SERVER_URL", "https://gnps.ucsd.edu/")
