@@ -1,5 +1,6 @@
 import os
 import requests
+import subprocess
 
 # set up tests via configuration file
 SCRIPT_DIRECTORY = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -37,6 +38,8 @@ else:
     print("test_massive_api: configuration file [" + CONFIG_FILE + "] is not present - using default test targets: web [massive.ucsd.edu] / FTP [massive.ucsd.edu]")
     TARGET_WEB_SERVERS.append("massive.ucsd.edu")
     TARGET_FTP_SERVERS.append("massive.ucsd.edu")
+result = subprocess.run(['ping', 'massive.ucsd.edu'], stdout=subprocess.PIPE)
+print("massive.ucsd.edu resolved IP address = [" + result.stdout.decode("utf-8") + "]")
 
 def test_massive_apis():
     for target in TARGET_WEB_SERVERS:
