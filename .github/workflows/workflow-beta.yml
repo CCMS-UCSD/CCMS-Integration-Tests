@@ -11,13 +11,13 @@ jobs:
 #    runs-on: ubuntu-latest
 #
 #    steps:
-#    - uses: actions/checkout@v1
+#    - uses: actions/checkout@v4
 #      with:
 #        submodules: recursive
-#    - name: Set up Python 3.9
-#      uses: actions/setup-python@v1
+#    - name: Set up Python 3.13
+#      uses: actions/setup-python@v5
 #      with:
-#        python-version: 3.9
+#        python-version: '3.13'
 #    - name: Install dependencies
 #      run: |
 #        python -m pip install --upgrade pip
@@ -32,13 +32,13 @@ jobs:
 #  workflow-beta-fbmn-test:
 #      runs-on: ubuntu-latest
 #      steps:
-#      - uses: actions/checkout@v1
+#      - uses: actions/checkout@v4
 #        with:
 #          submodules: recursive
-#      - name: Set up Python 3.9
-#        uses: actions/setup-python@v1
+#      - name: Set up Python 3.13
+#        uses: actions/setup-python@v5
 #        with:
-#          python-version: 3.9
+#          python-version: '3.13'
 #      - name: Install dependencies
 #        run: |
 #          python -m pip install --upgrade pip
@@ -54,13 +54,13 @@ jobs:
   workflow-beta-library-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: '3.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -75,13 +75,13 @@ jobs:
   workflow-beta-masst-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: '3.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -96,13 +96,13 @@ jobs:
   # workflow-beta-qemistree-test:
   #   runs-on: ubuntu-latest
   #   steps:
-  #   - uses: actions/checkout@v1
+  #   - uses: actions/checkout@v4
   #     with:
   #       submodules: recursive
-  #   - name: Set up Python 3.9
-  #     uses: actions/setup-python@v1
+  #   - name: Set up Python 3.13
+  #     uses: actions/setup-python@v5
   #     with:
-  #       python-version: 3.9
+  #       python-version: '3.13'
   #   - name: Install dependencies
   #     run: |
   #       python -m pip install --upgrade pip
@@ -117,13 +117,13 @@ jobs:
 #  workflow-beta-gc-test:
 #    runs-on: ubuntu-latest
 #    steps:
-#    - uses: actions/checkout@v1
+#    - uses: actions/checkout@v4
 #      with:
 #        submodules: recursive
-#    - name: Set up Python 3.9
-#      uses: actions/setup-python@v1
+#    - name: Set up Python 3.13
+#      uses: actions/setup-python@v5
 #      with:
-#        python-version: 3.9
+#        python-version: '3.13'
 #    - name: Install dependencies
 #      run: |
 #        python -m pip install --upgrade pip
@@ -143,13 +143,13 @@ jobs:
   workflow-beta-mergepolarity-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: '3.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -164,13 +164,13 @@ jobs:
   workflow-beta-molnet-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: '3.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -185,13 +185,13 @@ jobs:
   workflow-beta-ms2lda-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: '3.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -206,13 +206,13 @@ jobs:
 #  workflow-beta-falcon-test:
 #    runs-on: ubuntu-latest
 #    steps:
-#    - uses: actions/checkout@v1
+#    - uses: actions/checkout@v4
 #      with:
 #        submodules: recursive
-#    - name: Set up Python 3.9
-#      uses: actions/setup-python@v1
+#    - name: Set up Python 3.13
+#      uses: actions/setup-python@v5
 #      with:
-#        python-version: 3.9
+#        python-version: '3.13'
 #    - name: Install dependencies
 #      run: |
 #        python -m pip install --upgrade pip
@@ -227,13 +227,13 @@ jobs:
 #  workflow-beta-misc-test:
 #    runs-on: ubuntu-latest
 #    steps:
-#    - uses: actions/checkout@v1
+#    - uses: actions/checkout@v4
 #      with:
 #        submodules: recursive
-#    - name: Set up Python 3.9
-#      uses: actions/setup-python@v1
+#    - name: Set up Python 3.13
+#      uses: actions/setup-python@v5
 #      with:
-#        python-version: 3.9
+#        python-version: '3.13'
 #    - name: Install dependencies
 #      run: |
 #        python -m pip install --upgrade pip
